@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification - Mercurial</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/icon.png">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+     <div class="container-fluid vh-100 d-flex p-3">
+        <!-- Left side - Blue gradient with Mercurial branding -->
+        <div class="flex-fill gradient-bg d-flex align-items-center justify-content-center me-3">
+            <h1 class="text-white mercurial-title d-none">Mercurial</h1>
+        </div>
+
+        <!-- Right side - Login form -->
+        <div class="flex-fill d-flex align-items-center justify-content-center p-0">
+            <div class="form-container w-100">
+                    <form id="otpForm" class="needs-validation" novalidate>
+                        <!-- Header -->
+                        <div class="text-center mb-4">
+                            <h2 class="form-title">Enter OTP</h2>
+                            <p class="form-subtitle">Enter the OTP we sent to vkal****@gmail.com</p>
+                        </div>
+
+                        <!-- OTP Input Fields -->
+                        <div class="otp-inputs-container mb-4">
+                            <div class="otp-inputs d-flex justify-content-center gap-3">
+                                <input type="text" class="otp-input form-control shadow-none" id="otp-0" maxlength="1" placeholder="0" required>
+                                <input type="text" class="otp-input form-control shadow-none" id="otp-1" maxlength="1" placeholder="0" required>
+                                <input type="text" class="otp-input form-control shadow-none" id="otp-2" maxlength="1" placeholder="0" required>
+                                <input type="text" class="otp-input form-control shadow-none" id="otp-3" maxlength="1" placeholder="0" required>
+                            </div>
+                            <!-- Enhanced validation feedback structure -->
+                            <div class="invalid-feedback text-center mt-2">
+                                Please enter a valid 4-digit OTP.
+                            </div>
+                        </div>
+
+                        <!-- Continue Button -->
+                        <button type="submit" class="btn continue-btn w-100 mb-4" id="continueBtn" disabled>
+                            Continue
+                        </button>
+
+                        <!-- Resend Link -->
+                        <div class="text-center">
+                            <span class="resend-text">Didn't get an OTP? </span>
+                            <button type="button" class="btn-link resend-link" id="resendBtn">Resend OTP</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/otp.js"></script>
+</body>
+</html>

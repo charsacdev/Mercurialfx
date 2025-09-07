@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercurial Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/icon.png">
+    <link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid vh-100 d-flex p-3">
+        <!-- Left side - Blue gradient with Mercurial branding -->
+        <div class="flex-fill gradient-bg d-flex align-items-center justify-content-center me-3">
+            <h1 class="text-white mercurial-title d-none">Mercurial</h1>
+        </div>
+
+        <!-- Right side - Login form -->
+        <div class="flex-fill d-flex align-items-center justify-content-center p-2">
+            <div class="form-container w-100">
+                <!-- Header -->
+                <div class="text-center mb-4">
+                    <h2 class="welcome-title">Welcome back!</h2>
+                    <p class="welcome-subtitle">Sign in to your Mercurial account to continue.</p>
+                </div>
+
+                <!-- Form -->
+                <form id="loginForm" novalidate>
+                    <!-- Email field -->
+                    <div class="mb-3">
+                        <label for="email" class="visually-hidden">Email address</label>
+                        <input 
+                            type="email" 
+                            class="form-control form-control-custom" 
+                            id="email" 
+                            placeholder="Email address"
+                            required
+                        >
+                        <div class="invalid-feedback">
+                            Please provide a valid email address.
+                        </div>
+                    </div>
+
+                    <!-- Password field -->
+                    <div class="mb-3">
+                        <label for="password" class="visually-hidden">Password</label>
+                        <div class="position-relative password-wrapper">
+                            <input 
+                                type="password" 
+                                class="form-control form-control-custom password-field" 
+                                id="password" 
+                                placeholder="Password"
+                                required
+                                minlength="6"
+                            >
+                            <button type="button" class="password-toggle" onclick="togglePassword(this)">
+                                <i class="bi bi-eye" id="password-icon"></i>
+                            </button>
+                        </div>
+                        <div class="invalid-feedback">
+                            Password must be at least 6 characters long.
+                        </div>
+                    </div>
+
+                    <!-- Remember password -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="remember">
+                            <label class="form-check-label text-muted" for="remember" style="font-size: 14px;">
+                                Remember password
+                            </label>
+                        </div>
+                       
+                    </div>
+
+                    <!-- Forgot password -->
+                    <p>
+                        <a href="#" class="text-link">Forgot password?</a>
+                    </p>
+
+                    <!-- Sign In button -->
+                    <button type="submit" class="btn btn-primary btn-primary-custom w-100 fw-medium mb-4">
+                        Sign In
+                    </button>
+
+                    <!-- Create account link -->
+                    <div class="text-center">
+                        <span class="text-muted" style="font-size: 14px;">Don't have an account? </span>
+                        <a href="register.html" class="text-link">Create an account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

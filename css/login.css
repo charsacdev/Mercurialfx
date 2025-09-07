@@ -1,0 +1,302 @@
+/*=============LOGINS CSS MERCURIAL FX================*/
+
+
+ body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            font-family: 'Inter', sans-serif;
+         }
+
+        
+        .gradient-bg {
+            width:20%;
+            background-color:  #2563eb;
+            border-radius: 1.5rem;
+            background-image: url('../img/auth-l6.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        
+        .form-container {
+            max-width: 380px;
+            overflow: auto;
+        }
+        
+        .form-control-custom {
+            height: 52px;
+            background-color: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            padding: 0 16px;
+            box-shadow: none !important;
+        }
+        
+        .form-control-custom:focus {
+            background-color: #ffffff;
+            border-color: #3b82f6;
+            box-shadow: none !important;
+            outline: none;
+        }
+        
+        .form-control-custom::placeholder {
+            color: #64748b;
+            font-weight: 400;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .password-toggle:hover {
+            color: #334155;
+        }
+        
+        .btn-primary-custom {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+            height: 52px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: none !important;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #2563eb;
+            border-color: #2563eb;
+            box-shadow: none !important;
+        }
+        
+        .btn-primary-custom:focus {
+            background-color: #2563eb;
+            border-color: #2563eb;
+            box-shadow: none !important;
+        }
+        
+        .text-link {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .text-link:hover {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .mercurial-title {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+        
+        .form-check-input {
+            box-shadow: none !important;
+        }
+        
+        .form-check-input:focus {
+            box-shadow: none !important;
+            border-color: #3b82f6;
+        }
+        
+        .form-check-input:checked {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        
+        .welcome-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        
+        .welcome-subtitle {
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        /*==========validate form=========*/
+        .form-control.is-valid, .was-validated .form-control:valid{
+            border-color: #238d55 !important;
+            padding-right:10px !important;
+            background-image: none !important;
+            background-repeat: none !important;
+            background-position: none !important;
+            background-size: none !important;
+        }
+
+         .form-control.is-invalid{
+            border-color: #c6101c !important;
+            padding-right:none !important;
+            background-image: none !important;
+            background-repeat: none !important;
+            background-position: none !important;
+            background-size: none !important;
+        }
+        
+        .form-control:invalid{
+            background-image: none !important;
+        }
+        @media (max-width: 768px) {
+            .gradient-bg {
+                display: none !important;
+            }
+            
+            .container-fluid {
+                padding: 20px !important;
+            }
+            
+            .form-container {
+                max-width: 100%;
+            }
+            
+            .mercurial-title {
+                font-size: 2.5rem;
+            }
+            
+            .welcome-title {
+                font-size: 1.5rem;
+            }
+
+            .register-head{
+                margin-top: 200px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container-fluid {
+                padding: 16px !important;
+            }
+            
+            .welcome-title {
+                font-size: 1.375rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 14px;
+            }
+        }
+
+
+/*=============OTP CSS=====================*/
+/* OTP Inputs */
+.otp-inputs-container {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.otp-inputs {
+  gap: 1rem !important;
+}
+
+.otp-input {
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  background: white;
+  position: relative;
+}
+
+.otp-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.otp-input.is-invalid {
+  border-color: #dc3545;
+  animation: shake 0.3s ease-in-out;
+  background-color: #fef2f2;
+}
+
+.otp-input.is-valid {
+  border-color: #198754;
+  background-color: #f0fdf4;
+  box-shadow: 0 0 0 0.1rem rgba(25, 135, 84, 0.1);
+  background-image: none !important;
+}
+
+/* Continue Button */
+.continue-btn {
+  height: 3rem;
+  background-color: #3b82f6;
+  border: none;
+  color: white;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.continue-btn:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.continue-btn:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Resend Link */
+.resend-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.resend-link {
+  color: #111827;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  transition: text-decoration 0.2s ease;
+}
+
+.resend-link:hover {
+  text-decoration: underline;
+  color: #111827;
+}
+
+/* Shake animation for validation feedback */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
