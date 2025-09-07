@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercurial FX Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../img/icon.png">
+</head>
+<body>
+    <div class="d-flex vh-100">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay d-lg-none" id="mobileOverlay"></div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar bg-white border-end d-lg-flex" id="sidebar">
+            <!-- Close Button for Mobile -->
+            <div class="d-lg-none p-3">
+                <button class="btn btn-link p-0 text-dark" id="closeSidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            
+            <div class="flex-grow-1 py-3" style="height:100vh;overflow:auto;">
+                <!-- Navigation -->
+                <nav class="px-3">
+
+                    <div class="nav-item mb-4">
+                        <img src="../img/logo.png" class="img-fluid m-3">
+                    </div>
+
+
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav active w-100 text-start">
+                            <i class="bi bi-grid-3x3-gap me-3"></i>
+                            Dashboard
+                        </button>
+                    </div>
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-credit-card me-3"></i>
+                            Transactions
+                        </button>
+                    </div>
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-people me-3"></i>
+                            Referral
+                        </button>
+                    </div>
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-person me-3"></i>
+                            Profile
+                        </button>
+                    </div>
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-gear me-3"></i>
+                            Settings
+                        </button>
+                    </div>
+                    <div class="nav-item mb-5">
+                       <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-box-arrow-right me-3"></i>
+                            Logout
+                        </button>
+                    </div>
+
+                     <!-- KYC Verification Section -->
+                    <div class="mb-5 px-3">
+                        <div class="kyc-card bg-light rounded p-3 text-center">
+                            <div class="kyc-icon mx-auto mb-3">
+                                <i class="bi bi-shield-check text-warning"></i>
+                            </div>
+                            <p class="small text-muted mb-3">Your KYC status is not verified</p>
+                            <button class="btn btn-primary w-100">Get verified</button>
+                        </div>
+                    </div>
+                </nav>
+
+               
+            </div>
+        </div>
+
+          <!-- Main Content Area -->
+        <div class="flex-grow-1 d-flex flex-column">
+            <!-- Header -->
+            <header class="bg-white border-bottom px-3 px-lg-4 py-3 d-flex align-items-center justify-content-between mb-5 position-relative">
+                <!-- Mobile Menu Toggle -->
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link p-0 me-3 d-lg-none text-dark" id="toggleSidebar">
+                        <i class="bi bi-list fs-4"></i>
+                    </button>
+                    
+                  
+                    <div class="d-flex align-items-center">
+                        <!-- Welcome Message -->
+                        <h1 class="h5 mb-0 text-dark d-block">KYC Verification</h1>
+                    </div>
+                </div>
+
+                <!-- User Profile Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-link text-decoration-none p-2 d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+                        <div class="user-avatar me-2">
+                            <span class="text-primary">J</span>
+                        </div>
+                        <div class="text-start me-2 d-none d-sm-block">
+                            <div class="small fw-medium text-dark">Janet Doe</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">Customer</div>
+                        </div>
+                        <i class="bi bi-chevron-down text-muted"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </header>
+
+           <main class="flex-grow-1 d-flex align-items-center justify-content-center position-relative main-content" style="border:0px solid green;overflow-y: auto; height: calc(100vh - 0px); box-sizing: border-box;">
+            <div class="container">
+                <div class="row w-100 gx-4 position-absolute top-0 end-0 mt-0 me-0 p-4" >
+                <!-- Left Column - 70% -->
+                <div class="col-lg-9 col-md-12 mb-4 mb-md-0" style="border:0px solid green">
+                     <form class="kyc-profile">
+                        <div class="mb-4">
+                        <label class="form-label">Select your ID</label>
+                        <select class="form-select shadow-none" required>
+                            <option value="">Select ID type</option>
+                            <option value="nin">NIN</option>
+                            <option value="passport">Passport</option>
+                            <option value="drivers-license">Driver's License</option>
+                        </select>
+                        </div>
+
+                        <div class="mb-4">
+                        <label class="form-label">Enter your ID number</label>
+                        <input type="text" class="form-control shadow-none" placeholder="84952387818" required>
+                        </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">ID image (front)</label>
+                                <div class="card-dashed upload-card" data-input="idFrontInput">
+                                    <i class="bi bi-camera" style="font-size: 2rem; color: #2563eb;"></i>
+                                    <p class="text-muted mt-2">Click here to take photo</p>
+                                </div>
+                                <input type="file" id="idFrontInput" accept="image/*" capture="environment" class="d-none" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">ID image (back)</label>
+                                <div class="card-dashed upload-card" data-input="idBackInput">
+                                    <i class="bi bi-camera" style="font-size: 2rem; color: #2563eb;"></i>
+                                    <p class="text-muted mt-2">Click here to take photo</p>
+                                </div>
+                                <input type="file" id="idBackInput" accept="image/*" capture="environment" class="d-none" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">Take a selfie</label>
+                                <div class="card-dashed upload-card" data-input="selfieInput">
+                                    <i class="bi bi-camera" style="font-size: 2rem; color: #2563eb;"></i>
+                                    <p class="text-muted mt-2">Click here to take selfie</p>
+                                </div>
+                                <input type="file" id="selfieInput" accept="image/*" capture="user" class="d-none" required>
+                            </div>
+
+                         <div class="mb-4">
+                            <a href="kyc2.html">
+                               <button type="button" class="btn btn-primary w-100 mt-4 py-2">Submit</button>
+                            </a> 
+                         </div>
+                    </form>
+                </div>
+
+                <!-- Right Column - 30% -->
+                <div class="col-lg-3 col-md-5">
+                     <div class="info-section">
+                            <h6>Personal Information</h6>
+                            <p class="small text-muted">Your personal information helps us confirm your identity and comply with global KYC/AML regulations. This step keeps your account secure and protects against fraud.</p>
+                        </div>
+
+                        <div class="info-section">
+                            <h6>Before You Begin</h6>
+                            <ul class="text-muted" style="font-size:14px;">
+                            <li>Use your full legal name exactly as it appears on your official ID.</li>
+                            <li>Ensure your date of birth matches your documents.</li>
+                            <li>Select your nationality accurately — this determines available verification options.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-section">
+                            <h6>Why KYC Matters?</h6>
+                            <ul class="text-muted" style="font-size:14px;">
+                            <li>Protects your account from fraud, identity theft, and unauthorized access.</li>
+                            <li>Meets global financial standards to keep our platform safe and legal.</li>
+                            <li>Ensures all users are verified, creating a reliable and transparent community.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        document.querySelectorAll(".upload-card").forEach(card => {
+            let inputId = card.getAttribute("data-input");
+            let inputEl = document.getElementById(inputId);
+
+            // Click card → open camera
+            card.addEventListener("click", () => inputEl.click());
+
+            // Show preview after capture
+            inputEl.addEventListener("change", (e) => {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                card.innerHTML = `
+                    <img src="${ev.target.result}" class="img-fluid rounded" style="max-height:200px; object-fit:cover;">
+                `;
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercurial FX Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../img/icon.png">
+</head>
+<body>
+    <div class="d-flex vh-100">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay d-lg-none" id="mobileOverlay"></div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar bg-white border-end d-lg-flex" id="sidebar">
+            <!-- Close Button for Mobile -->
+            <div class="d-lg-none p-3">
+                <button class="btn btn-link p-0 text-dark" id="closeSidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            
+            <div class="flex-grow-1 py-3" style="height:100vh;overflow:auto;">
+                <!-- Navigation -->
+                <nav class="px-3">
+
+                    <div class="nav-item mb-4">
+                        <img src="../img/logo.png" class="img-fluid m-3">
+                    </div>
+
+
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav active w-100 text-start">
+                            <i class="bi bi-grid-3x3-gap me-3"></i>
+                            Dashboard
+                        </button>
+                    </div>
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-credit-card me-3"></i>
+                            Transactions
+                        </button>
+                    </div>
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-people me-3"></i>
+                            Referral
+                        </button>
+                    </div>
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-person me-3"></i>
+                            Profile
+                        </button>
+                    </div>
+                    <div class="nav-item mb-2">
+                        <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-gear me-3"></i>
+                            Settings
+                        </button>
+                    </div>
+                    <div class="nav-item mb-5">
+                       <button class="btn btn-nav w-100 text-start">
+                            <i class="bi bi-box-arrow-right me-3"></i>
+                            Logout
+                        </button>
+                    </div>
+
+                     <!-- KYC Verification Section -->
+                    <div class="mb-5 px-3">
+                        <div class="kyc-card bg-light rounded p-3 text-center">
+                            <div class="kyc-icon mx-auto mb-3">
+                                <i class="bi bi-shield-check text-warning"></i>
+                            </div>
+                            <p class="small text-muted mb-3">Your KYC status is not verified</p>
+                            <button class="btn btn-primary w-100">Get verified</button>
+                        </div>
+                    </div>
+                </nav>
+
+               
+            </div>
+        </div>
+
+          <!-- Main Content Area -->
+        <div class="flex-grow-1 d-flex flex-column">
+            <!-- Header -->
+            <header class="bg-white border-bottom px-3 px-lg-4 py-3 d-flex align-items-center justify-content-between mb-5 position-relative">
+                <!-- Mobile Menu Toggle -->
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link p-0 me-3 d-lg-none text-dark" id="toggleSidebar">
+                        <i class="bi bi-list fs-4"></i>
+                    </button>
+                    
+                  
+                    <div class="d-flex align-items-center">
+                        <!-- Welcome Message -->
+                        <h1 class="h5 mb-0 text-dark d-block">KYC Verification</h1>
+                    </div>
+                </div>
+
+                <!-- User Profile Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-link text-decoration-none p-2 d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+                        <div class="user-avatar me-2">
+                            <span class="text-primary">J</span>
+                        </div>
+                        <div class="text-start me-2 d-none d-sm-block">
+                            <div class="small fw-medium text-dark">Janet Doe</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">Customer</div>
+                        </div>
+                        <i class="bi bi-chevron-down text-muted"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </header>
+
+           <main class="flex-grow-1 d-flex align-items-center justify-content-center position-relative main-content" style="border:0px solid green;overflow-y: auto; height: calc(100vh - 0px); box-sizing: border-box;">
+            <div class="container">
+                <div class="row w-100 gx-4 position-absolute top-0 end-0 mt-0 me-0 p-4" >
+                <!-- Left Column - 70% -->
+                <div class="col-lg-9 col-md-12 mb-4 mb-md-0" style="border:0px solid green">
+                     <form class="kyc-profile">
+                       
+                        <div class="mb-4">
+                            <label class="form-label">Street Address</label>
+                            <input type="text" class="form-control shadow-none" placeholder="Street address" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-control shadow-none" placeholder="City" required>
+                        </div>
+
+                         <div class="mb-4">
+                            <label class="form-label">Select State</label>
+                                <select class="form-select shadow-none" required>
+                                    <option value="">Select State</option>
+                                    <option value="abia">Abia</option>
+                                    <option value="adamawa">Adamawa</option>
+                                    <option value="akwa-ibom">Akwa Ibom</option>
+                                    <option value="anambra">Anambra</option>
+                                    <option value="bauchi">Bauchi</option>
+                                    <option value="bayelsa">Bayelsa</option>
+                                    <option value="benue">Benue</option>
+                                    <option value="borno">Borno</option>
+                                    <option value="cross-river">Cross River</option>
+                                    <option value="delta">Delta</option>
+                                    <option value="ebonyi">Ebonyi</option>
+                                    <option value="edo">Edo</option>
+                                    <option value="ekiti">Ekiti</option>
+                                    <option value="enugu">Enugu</option>
+                                    <option value="gombe">Gombe</option>
+                                    <option value="imo">Imo</option>
+                                    <option value="jigawa">Jigawa</option>
+                                    <option value="kaduna">Kaduna</option>
+                                    <option value="kano">Kano</option>
+                                    <option value="katsina">Katsina</option>
+                                    <option value="kebbi">Kebbi</option>
+                                    <option value="kogi">Kogi</option>
+                                    <option value="kwara">Kwara</option>
+                                    <option value="lagos">Lagos</option>
+                                    <option value="nasarawa">Nasarawa</option>
+                                    <option value="niger">Niger</option>
+                                    <option value="ogun">Ogun</option>
+                                    <option value="ondo">Ondo</option>
+                                    <option value="osun">Osun</option>
+                                    <option value="oyo">Oyo</option>
+                                    <option value="plateau">Plateau</option>
+                                    <option value="rivers">Rivers</option>
+                                    <option value="sokoto">Sokoto</option>
+                                    <option value="taraba">Taraba</option>
+                                    <option value="yobe">Yobe</option>
+                                    <option value="zamfara">Zamfara</option>
+                                    <option value="fct">Federal Capital Territory (Abuja)</option>
+                                    </select>
+
+                            </div>
+
+                          <div class="mb-4">
+                            <label class="form-label">Postal Code</label>
+                            <input type="text" class="form-control shadow-none" placeholder="Postal code" required>
+                          </div>
+
+                           <div class="mb-4">
+                              <label class="form-label">Country</label>
+                                <select class="form-select shadow-none" required>
+                                    <option value="">Select Country</option>
+                                    <option value="afghanistan">Afghanistan</option>
+                                    <option value="albania">Albania</option>
+                                    <option value="algeria">Algeria</option>
+                                    <option value="andorra">Andorra</option>
+                                    <option value="angola">Angola</option>
+                                    <option value="antigua-and-barbuda">Antigua and Barbuda</option>
+                                    <option value="argentina">Argentina</option>
+                                    <option value="armenia">Armenia</option>
+                                    <option value="australia">Australia</option>
+                                    <option value="austria">Austria</option>
+                                    <option value="azerbaijan">Azerbaijan</option>
+                                    <option value="bahamas">Bahamas</option>
+                                    <option value="bahrain">Bahrain</option>
+                                    <option value="bangladesh">Bangladesh</option>
+                                    <option value="barbados">Barbados</option>
+                                    <option value="belarus">Belarus</option>
+                                    <option value="belgium">Belgium</option>
+                                    <option value="belize">Belize</option>
+                                    <option value="benin">Benin</option>
+                                    <option value="bhutan">Bhutan</option>
+                                    <option value="bolivia">Bolivia</option>
+                                    <option value="bosnia-and-herzegovina">Bosnia and Herzegovina</option>
+                                    <option value="botswana">Botswana</option>
+                                    <option value="brazil">Brazil</option>
+                                    <option value="brunei">Brunei</option>
+                                    <option value="bulgaria">Bulgaria</option>
+                                    <option value="burkina-faso">Burkina Faso</option>
+                                    <option value="burundi">Burundi</option>
+                                    <option value="cabo-verde">Cabo Verde</option>
+                                    <option value="cambodia">Cambodia</option>
+                                    <option value="cameroon">Cameroon</option>
+                                    <option value="canada">Canada</option>
+                                    <option value="central-african-republic">Central African Republic</option>
+                                    <option value="chad">Chad</option>
+                                    <option value="chile">Chile</option>
+                                    <option value="china">China</option>
+                                    <option value="colombia">Colombia</option>
+                                    <option value="comoros">Comoros</option>
+                                    <option value="congo">Congo</option>
+                                    <option value="costa-rica">Costa Rica</option>
+                                    <option value="croatia">Croatia</option>
+                                    <option value="cuba">Cuba</option>
+                                    <option value="cyprus">Cyprus</option>
+                                    <option value="czech-republic">Czech Republic</option>
+                                    <option value="denmark">Denmark</option>
+                                    <option value="djibouti">Djibouti</option>
+                                    <option value="dominica">Dominica</option>
+                                    <option value="dominican-republic">Dominican Republic</option>
+                                    <option value="ecuador">Ecuador</option>
+                                    <option value="egypt">Egypt</option>
+                                    <option value="el-salvador">El Salvador</option>
+                                    <option value="equatorial-guinea">Equatorial Guinea</option>
+                                    <option value="eritrea">Eritrea</option>
+                                    <option value="estonia">Estonia</option>
+                                    <option value="eswatini">Eswatini</option>
+                                    <option value="ethiopia">Ethiopia</option>
+                                    <option value="fiji">Fiji</option>
+                                    <option value="finland">Finland</option>
+                                    <option value="france">France</option>
+                                    <option value="gabon">Gabon</option>
+                                    <option value="gambia">Gambia</option>
+                                    <option value="georgia">Georgia</option>
+                                    <option value="germany">Germany</option>
+                                    <option value="ghana">Ghana</option>
+                                    <option value="greece">Greece</option>
+                                    <option value="grenada">Grenada</option>
+                                    <option value="guatemala">Guatemala</option>
+                                    <option value="guinea">Guinea</option>
+                                    <option value="guinea-bissau">Guinea-Bissau</option>
+                                    <option value="guyana">Guyana</option>
+                                    <option value="haiti">Haiti</option>
+                                    <option value="honduras">Honduras</option>
+                                    <option value="hungary">Hungary</option>
+                                    <option value="iceland">Iceland</option>
+                                    <option value="india">India</option>
+                                    <option value="indonesia">Indonesia</option>
+                                    <option value="iran">Iran</option>
+                                    <option value="iraq">Iraq</option>
+                                    <option value="ireland">Ireland</option>
+                                    <option value="israel">Israel</option>
+                                    <option value="italy">Italy</option>
+                                    <option value="jamaica">Jamaica</option>
+                                    <option value="japan">Japan</option>
+                                    <option value="jordan">Jordan</option>
+                                    <option value="kazakhstan">Kazakhstan</option>
+                                    <option value="kenya">Kenya</option>
+                                    <option value="kiribati">Kiribati</option>
+                                    <option value="korea-north">North Korea</option>
+                                    <option value="korea-south">South Korea</option>
+                                    <option value="kuwait">Kuwait</option>
+                                    <option value="kyrgyzstan">Kyrgyzstan</option>
+                                    <option value="laos">Laos</option>
+                                    <option value="latvia">Latvia</option>
+                                    <option value="lebanon">Lebanon</option>
+                                    <option value="lesotho">Lesotho</option>
+                                    <option value="liberia">Liberia</option>
+                                    <option value="libya">Libya</option>
+                                    <option value="liechtenstein">Liechtenstein</option>
+                                    <option value="lithuania">Lithuania</option>
+                                    <option value="luxembourg">Luxembourg</option>
+                                    <option value="madagascar">Madagascar</option>
+                                    <option value="malawi">Malawi</option>
+                                    <option value="malaysia">Malaysia</option>
+                                    <option value="maldives">Maldives</option>
+                                    <option value="mali">Mali</option>
+                                    <option value="malta">Malta</option>
+                                    <option value="marshall-islands">Marshall Islands</option>
+                                    <option value="mauritania">Mauritania</option>
+                                    <option value="mauritius">Mauritius</option>
+                                    <option value="mexico">Mexico</option>
+                                    <option value="micronesia">Micronesia</option>
+                                    <option value="moldova">Moldova</option>
+                                    <option value="monaco">Monaco</option>
+                                    <option value="mongolia">Mongolia</option>
+                                    <option value="montenegro">Montenegro</option>
+                                    <option value="morocco">Morocco</option>
+                                    <option value="mozambique">Mozambique</option>
+                                    <option value="myanmar">Myanmar</option>
+                                    <option value="namibia">Namibia</option>
+                                    <option value="nauru">Nauru</option>
+                                    <option value="nepal">Nepal</option>
+                                    <option value="netherlands">Netherlands</option>
+                                    <option value="new-zealand">New Zealand</option>
+                                    <option value="nicaragua">Nicaragua</option>
+                                    <option value="niger">Niger</option>
+                                    <option value="nigeria">Nigeria</option>
+                                    <option value="north-macedonia">North Macedonia</option>
+                                    <option value="norway">Norway</option>
+                                    <option value="oman">Oman</option>
+                                    <option value="pakistan">Pakistan</option>
+                                    <option value="palau">Palau</option>
+                                    <option value="panama">Panama</option>
+                                    <option value="papua-new-guinea">Papua New Guinea</option>
+                                    <option value="paraguay">Paraguay</option>
+                                    <option value="peru">Peru</option>
+                                    <option value="philippines">Philippines</option>
+                                    <option value="poland">Poland</option>
+                                    <option value="portugal">Portugal</option>
+                                    <option value="qatar">Qatar</option>
+                                    <option value="romania">Romania</option>
+                                    <option value="russia">Russia</option>
+                                    <option value="rwanda">Rwanda</option>
+                                    <option value="saint-kitts-and-nevis">Saint Kitts and Nevis</option>
+                                    <option value="saint-lucia">Saint Lucia</option>
+                                    <option value="saint-vincent-and-the-grenadines">Saint Vincent and the Grenadines</option>
+                                    <option value="samoa">Samoa</option>
+                                    <option value="san-marino">San Marino</option>
+                                    <option value="sao-tome-and-principe">Sao Tome and Principe</option>
+                                    <option value="saudi-arabia">Saudi Arabia</option>
+                                    <option value="senegal">Senegal</option>
+                                    <option value="serbia">Serbia</option>
+                                    <option value="seychelles">Seychelles</option>
+                                    <option value="sierra-leone">Sierra Leone</option>
+                                    <option value="singapore">Singapore</option>
+                                    <option value="slovakia">Slovakia</option>
+                                    <option value="slovenia">Slovenia</option>
+                                    <option value="solomon-islands">Solomon Islands</option>
+                                    <option value="somalia">Somalia</option>
+                                    <option value="south-africa">South Africa</option>
+                                    <option value="south-sudan">South Sudan</option>
+                                    <option value="spain">Spain</option>
+                                    <option value="sri-lanka">Sri Lanka</option>
+                                    <option value="sudan">Sudan</option>
+                                    <option value="suriname">Suriname</option>
+                                    <option value="sweden">Sweden</option>
+                                    <option value="switzerland">Switzerland</option>
+                                    <option value="syria">Syria</option>
+                                    <option value="taiwan">Taiwan</option>
+                                    <option value="tajikistan">Tajikistan</option>
+                                    <option value="tanzania">Tanzania</option>
+                                    <option value="thailand">Thailand</option>
+                                    <option value="togo">Togo</option>
+                                    <option value="tonga">Tonga</option>
+                                    <option value="trinidad-and-tobago">Trinidad and Tobago</option>
+                                    <option value="tunisia">Tunisia</option>
+                                    <option value="turkey">Turkey</option>
+                                    <option value="turkmenistan">Turkmenistan</option>
+                                    <option value="tuvalu">Tuvalu</option>
+                                    <option value="uganda">Uganda</option>
+                                    <option value="ukraine">Ukraine</option>
+                                    <option value="united-arab-emirates">United Arab Emirates</option>
+                                    <option value="united-kingdom">United Kingdom</option>
+                                    <option value="united-states">United States</option>
+                                    <option value="uruguay">Uruguay</option>
+                                    <option value="uzbekistan">Uzbekistan</option>
+                                    <option value="vanuatu">Vanuatu</option>
+                                    <option value="vatican-city">Vatican City</option>
+                                    <option value="venezuela">Venezuela</option>
+                                    <option value="vietnam">Vietnam</option>
+                                    <option value="yemen">Yemen</option>
+                                    <option value="zambia">Zambia</option>
+                                    <option value="zimbabwe">Zimbabwe</option>
+                                    </select>
+
+                            </div>
+
+                           
+                           <div class="mb-4">
+                                <label class="form-label">Upload address proof (utility/bank statement)</label>
+                                <div class="card-dashed upload-card" data-input="addressProofInput">
+                                    <i class="bi bi-upload" style="font-size: 2rem; color: #2563eb;"></i>
+                                    <p class="text-muted mt-2">Click here to upload (Image or PDF)</p>
+                                </div>
+                                <input type="file" id="addressProofInput" 
+                                        accept="image/*,application/pdf" 
+                                        class="d-none" required>
+                                </div>
+
+
+                         <div class="mb-4">
+                             <button class="btn btn-primary w-100 mt-4 py-2">Submit</button>
+                         </div>
+                    </form>
+                </div>
+
+                <!-- Right Column - 30% -->
+                <div class="col-lg-3 col-md-5">
+                     <div class="info-section">
+                            <h6>Personal Information</h6>
+                            <p class="small text-muted">Your personal information helps us confirm your identity and comply with global KYC/AML regulations. This step keeps your account secure and protects against fraud.</p>
+                        </div>
+
+                        <div class="info-section">
+                            <h6>Before You Begin</h6>
+                            <ul class="text-muted" style="font-size:14px;">
+                            <li>Use your full legal name exactly as it appears on your official ID.</li>
+                            <li>Ensure your date of birth matches your documents.</li>
+                            <li>Select your nationality accurately — this determines available verification options.</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-section">
+                            <h6>Why KYC Matters?</h6>
+                            <ul class="text-muted" style="font-size:14px;">
+                            <li>Protects your account from fraud, identity theft, and unauthorized access.</li>
+                            <li>Meets global financial standards to keep our platform safe and legal.</li>
+                            <li>Ensures all users are verified, creating a reliable and transparent community.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        document.querySelectorAll(".upload-card").forEach(card => {
+            let inputId = card.getAttribute("data-input");
+            let inputEl = document.getElementById(inputId);
+
+            card.addEventListener("click", () => inputEl.click());
+
+            inputEl.addEventListener("change", (e) => {
+            if (e.target.files && e.target.files[0]) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+
+                if (file.type === "application/pdf") {
+                // Show PDF preview as icon
+                card.innerHTML = `
+                    <div class="text-center">
+                    <i class="bi bi-file-earmark-pdf" style="font-size: 3rem; color: red;"></i>
+                    <p class="mt-2">${file.name}</p>
+                    </div>
+                `;
+                } else if (file.type.startsWith("image/")) {
+                // Show image preview
+                reader.onload = function(ev) {
+                    card.innerHTML = `
+                    <img src="${ev.target.result}" class="img-fluid rounded" style="max-height:200px; object-fit:cover;">
+                    `;
+                };
+                reader.readAsDataURL(file);
+                } else {
+                alert("Invalid file type. Please upload an image or PDF.");
+                e.target.value = "";
+                }
+            }
+            });
+        });
+   </script>
+
+
+</body>
+</html>
