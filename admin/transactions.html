@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercurial - Transactions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="shortcut icon" href="../img/icon.png">
+</head>
+<body>
+
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">
+                <img src="../img/headerlogo.png" class="img-fluid">
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="sidebar-nav">
+                <ul class="list-unstyled">
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                    <li class="active with-badge"><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions <span class="badge text-bg-secondary ms-2">18</span></a></li>
+                    <li class="with-badge"><a href="#"><i class="fas fa-check-circle"></i> KYC <span class="badge text-bg-secondary ms-2">30</span></a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-broadcast-tower"></i> Broadcast</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        <div class="d-none d-lg-block sidebar-desktop bg-dark text-white p-3 vh-100 position-fixed">
+            <div class="mercurial-logo mb-4">
+                <h4 class="text-white">
+                    <img src="../img/headerlogo.png" class="img-fluid">
+                </h4>
+            </div>
+            <div class="sidebar-nav">
+                <ul class="list-unstyled">
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                    <li class="active with-badge"><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions <span class="badge text-bg-secondary ms-2">18</span></a></li>
+                    <li class="with-badge"><a href="#"><i class="fas fa-check-circle"></i> KYC <span class="badge text-bg-secondary ms-2">30</span></a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-broadcast-tower"></i> Broadcast</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+
+        <div class="flex-grow-1 p-4 content-area">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <button class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 class="dashboard-title">&nbsp;Transactions</h2>
+                <div class="d-flex align-items-center profile-section ms-auto ms-lg-0">
+                    <div class="profile-circle me-2">C</div>
+                    <div class="d-none d-sm-block">
+                        <small class="d-block profile-name">Charsac Tech.</small>
+                        <small class="d-block profile-role">Admin</small>
+                    </div>
+                    <i class="fas fa-angle-down text-muted ms-2 d-none d-sm-block"></i>
+                </div>
+            </div>
+
+            <div class="card p-3 shadow-sm border-0">
+                
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+                    
+                    <div class="search-box mb-3 mb-md-0 me-md-3">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                            <input type="text" class="form-control shadow-none border-start-0" placeholder="Search" aria-label="Search" id="transactionSearchInput">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary export-btn" data-bs-toggle="modal" data-bs-target="#exportModal">
+                        <i class="fas fa-file-export me-2"></i>Export
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="transactionsTable" class="table align-middle transactions-list-table w-100">
+                        <thead style="white-space: nowrap;">
+                            <tr>
+                                <th><input class="form-check-input" type="checkbox"></th>
+                                <th>User name</th>
+                                <th>Type</th>
+                                <th>Source</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody style="white-space: nowrap;">
+                            <tr class="table-row" data-id="1">
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td><div class="d-flex align-items-center"><div class="profile-initial me-2">J</div><span>John Doe</span></div></td>
+                                <td>Deposit</td><td>Wallet</td><td>₦5000</td>
+                                <td><span class="badge text-bg-success-custom">Success</span></td>
+                                <td>Aug 20, 2025 | 11:06AM</td>
+                                <td><button class="btn btn-sm btn-primary view-details-btn" data-bs-toggle="offcanvas" data-bs-target="#transactionDetailOffcanvas">View details</button></td>
+                            </tr>
+                             <tr class="table-row" data-id="2">
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td><div class="d-flex align-items-center"><div class="profile-initial me-2">J</div><span>John Doe</span></div></td>
+                                <td>Withdrawal</td><td>Broker</td><td>₦12000</td>
+                                <td><span class="badge text-bg-warning-custom">Pending</span></td>
+                                <td>Aug 20, 2025 | 11:06AM</td>
+                                <td><button class="btn btn-sm btn-primary view-details-btn" data-bs-toggle="offcanvas" data-bs-target="#transactionDetailOffcanvas">View details</button></td>
+                            </tr>
+                            <tr class="table-row" data-id="3">
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td><div class="d-flex align-items-center"><div class="profile-initial me-2">M</div><span>Mary Jane</span></div></td>
+                                <td>Deposit</td><td>Crypto</td><td>₦25000</td>
+                                <td><span class="badge text-bg-danger-custom">Cancelled</span></td>
+                                <td>Aug 19, 2025 | 09:15AM</td>
+                                <td><button class="btn btn-sm btn-primary view-details-btn" data-bs-toggle="offcanvas" data-bs-target="#transactionDetailOffcanvas">View details</button></td>
+                            </tr>
+                            <tr class="table-row" data-id="4">
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td><div class="d-flex align-items-center"><div class="profile-initial me-2">T</div><span>Tom Hanks</span></div></td>
+                                <td>Withdrawal</td><td>Wallet</td><td>₦500</td>
+                                <td><span class="badge text-bg-success-custom">Success</span></td>
+                                <td>Aug 15, 2025 | 05:30PM</td>
+                                <td><button class="btn btn-sm btn-primary view-details-btn" data-bs-toggle="offcanvas" data-bs-target="#transactionDetailOffcanvas">View details</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end transaction-offcanvas" tabindex="-1" id="transactionDetailOffcanvas" aria-labelledby="transactionDetailOffcanvasLabel">
+        <div class="offcanvas-header transaction-offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="transactionDetailOffcanvasLabel">Transaction Detail</h5>
+            <button type="button" class="btn-close text-reset shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column p-4">
+            
+            <div class="detail-section mb-4">
+                <h6 class="text-muted fw-bold mb-3 section-title">Details</h6>
+                <div class="row detail-grid">
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">Transaction ID</label>
+                        <p class="mb-0 fw-semibold">#743914721</p>
+                    </div>
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">Date</label>
+                        <p class="mb-0 fw-semibold">Aug 27, 2025 08:40PM</p>
+                    </div>
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">Status</label>
+                        <p class="mb-0"><span class="badge text-bg-warning-custom p-2 fw-semibold">Pending</span></p>
+                    </div>
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">Source</label>
+                        <p class="mb-0 fw-semibold">Crypto</p>
+                    </div>
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">Type</label>
+                        <p class="mb-0 fw-semibold">Sell</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-3">
+
+            <div class="detail-section mb-4">
+                <h6 class="text-muted fw-bold mb-3 section-title">Attachment</h6>
+                <button class="btn btn-outline-secondary attachment-btn">
+                    <i class="fas fa-paperclip me-2"></i>View attachment
+                </button>
+            </div>
+            
+            <hr class="my-3">
+
+            <div class="detail-section mb-4">
+                <h6 class="text-muted fw-bold mb-3 section-title">Transaction Hash</h6>
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light" value="987637634" readonly>
+                    <button class="btn btn-outline-secondary copy-btn" type="button"><i class="fas fa-copy"></i></button>
+                </div>
+            </div>
+            
+            <hr class="my-3">
+
+            <div class="detail-section mb-auto">
+                <h6 class="text-muted fw-bold mb-3 section-title">Receiving Details</h6>
+                <div class="row detail-grid">
+                    <div class="col-12 detail-item mb-3">
+                        <label class="text-muted d-block small">Account Number</label>
+                        <p class="mb-0 fw-semibold">31178642485</p>
+                    </div>
+                    <div class="col-12 detail-item mb-3">
+                        <label class="text-muted d-block small">Bank Account</label>
+                        <p class="mb-0 fw-semibold">First Bank</p>
+                    </div>
+                    <div class="col-12 detail-item mb-3">
+                        <label class="text-muted d-block small">Account Name</label>
+                        <p class="mb-0 fw-semibold">John Doe</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between pt-3 border-top offcanvas-footer">
+                <button class="btn btn-outline-danger me-2 flex-grow-1 p-2">Reject</button>
+                <button class="btn btn-primary flex-grow-1 p-2">Confirm</button>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exportModalLabel">Export Transactions</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted">Select the time duration for the export:</p>
+                    <div class="mb-3">
+                        <label for="durationSelect" class="form-label">Duration</label>
+                        <select class="form-select shadow-none" id="durationSelect">
+                            <option value="today">Today</option>
+                            <option value="last7">Last 7 Days</option>
+                            <option value="last30">Last 30 Days</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                    <div id="customRangeFields" class="row g-2 d-none">
+                        <div class="col-md-6">
+                            <label for="startDate" class="form-label">Start Date</label>
+                            <input type="date" class="form-control shadow-none" id="startDate">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="endDate" class="form-label">End Date</label>
+                            <input type="date" class="form-control shadow-none" id="endDate">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirmExportBtn">Download Export</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // -----------------------------------------------------------------
+            // 1. DataTables Initialization (REUSED)
+            // -----------------------------------------------------------------
+            const transactionsTable = $('#transactionsTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                lengthChange: false, 
+                pageLength: 10,
+                dom: '<"top"l<"clear">><"table-responsive"t><"bottom"ip<"clear">>',
+                columnDefs: [
+                    { orderable: false, targets: [0, 7] },
+                    { width: '20px', targets: 0 },
+                    { width: '120px', targets: 7 }, 
+                ],
+                initComplete: function () {
+                    var api = this.api();
+                    $('#transactionSearchInput').on('keyup', function () {
+                        api.search(this.value).draw();
+                    });
+                    $('.dataTables_filter').hide(); 
+                }
+            });
+            
+            // -----------------------------------------------------------------
+            // 2. Offcanvas & Global Close Logic (NEW/MODIFIED)
+            // -----------------------------------------------------------------
+            
+            // Logic to prevent offcanvas from opening when clicking checkbox
+            $('#transactionsTable tbody').on('click', 'tr.table-row', function (e) {
+                // Check if the click target is a checkbox, button, or inside a button
+                if (!$(e.target).is('input[type="checkbox"], button') && !$(e.target).closest('button').length) {
+                    var offcanvasElement = document.getElementById('transactionDetailOffcanvas');
+                    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+                    // In a real application, you'd load dynamic data here using the $(this).data('id')
+                    offcanvas.show();
+                }
+            });
+
+            // CRITICAL: Close other elements when Offcanvas opens or closes
+            var offcanvasElement = document.getElementById('transactionDetailOffcanvas');
+            offcanvasElement.addEventListener('show.bs.offcanvas', function () {
+                // On show, explicitly close any open modals (though they shouldn't usually be open simultaneously)
+                $('.modal.show').modal('hide');
+            });
+            
+            offcanvasElement.addEventListener('hidden.bs.offcanvas', function () {
+                // When offcanvas is hidden, ensure the mobile sidebar is also closed if it was open (though usually they are different break points)
+                var sidebarOffcanvasEl = document.getElementById('sidebarOffcanvas');
+                var sidebarOffcanvas = bootstrap.Offcanvas.getInstance(sidebarOffcanvasEl);
+                if (sidebarOffcanvas) {
+                    sidebarOffcanvas.hide();
+                }
+            });
+            
+            // -----------------------------------------------------------------
+            // 3. Export Modal Logic (NEW)
+            // -----------------------------------------------------------------
+            $('#durationSelect').on('change', function() {
+                if ($(this).val() === 'custom') {
+                    $('#customRangeFields').removeClass('d-none');
+                } else {
+                    $('#customRangeFields').addClass('d-none');
+                }
+            });
+
+            $('#confirmExportBtn').on('click', function() {
+                const duration = $('#durationSelect').val();
+                let dates = {};
+
+                if (duration === 'custom') {
+                    dates = {
+                        start: $('#startDate').val(),
+                        end: $('#endDate').val()
+                    };
+                    if (!dates.start || !dates.end) {
+                        alert('Please select both start and end dates.');
+                        return;
+                    }
+                    console.log(`Exporting custom range: ${dates.start} to ${dates.end}`);
+                } else {
+                    console.log(`Exporting data for: ${duration}`);
+                }
+
+                // Close the modal upon clicking Download
+                $('#exportModal').modal('hide');
+                // Optional: Trigger actual file download logic here
+            });
+            
+            // 4. Copy Hash button logic (REUSED)
+            $('.copy-btn').on('click', function() {
+                var hashInput = $(this).closest('.input-group').find('input');
+                hashInput.select();
+                document.execCommand('copy');
+                $(this).html('<i class="fas fa-check"></i> Copied!');
+                setTimeout(() => {
+                    $(this).html('<i class="fas fa-copy"></i>');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,704 @@
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* Custom Variables and Global Styles */
+:root {
+    --primary-color: #3498db;
+    --sidebar-bg: #000;
+    --sidebar-link-hover: #495057;
+    --active-bg: #495057;
+    --card-bg: #fff;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+    --success-badge-bg: #d4edda;
+    --success-badge-color: #155724;
+    --chart-bar-color: #4C6AB0;
+    --sidebar-width: 250px; /* Define sidebar width */
+}
+
+*{
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+body {
+    background-color: #f9f9f9;
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+/* -------------------------------------------------------------------- */
+/* 1. Sidebar and Layout Positioning */
+/* -------------------------------------------------------------------- */
+
+/* Desktop Sidebar (Fixed) */
+.sidebar-desktop {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg) !important;
+    left: 0;
+    top: 0;
+    z-index: 1030;
+}
+
+/* Content Area - Pushed right by the sidebar on large screens */
+.content-area {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+@media (min-width: 992px) {
+    /* Offset the main content only on desktop (lg and up) */
+    .content-area {
+        margin-left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
+    }
+}
+
+/* Mobile Header Button Styling */
+.mobile-header .btn-dark {
+    background-color: var(--sidebar-bg) !important;
+    border-color: var(--sidebar-bg) !important;
+}
+
+/* Off-canvas styling for mobile menu - ensures it slides over content */
+.offcanvas.offcanvas-start {
+    width: var(--sidebar-width);
+}
+
+/* -------------------------------------------------------------------- */
+/* 2. Custom Sidebar/Navigation Styles */
+/* -------------------------------------------------------------------- */
+.mercurial-logo {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0 !important;
+}
+.sidebar-nav ul { padding: 20px 0; }
+.sidebar-nav li { margin-bottom: 5px; position: relative; padding-right: 15px; }
+.sidebar-nav a { color: #bdbdbd; text-decoration: none; display: block; padding: 10px 15px; border-radius: 5px; transition: background-color 0.2s; }
+.sidebar-nav a:hover:not(.active a) { background-color: var(--sidebar-link-hover); color: white; }
+.sidebar-nav li.active { background-color: var(--active-bg); border-radius: 5px; }
+.sidebar-nav li.active a { color: white; padding: 10px 15px; }
+.sidebar-nav li i { width: 20px; margin-right: 10px; }
+.with-badge .badge { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background-color: #555 !important; color: white !important; }
+.sidebar-footer { position: absolute; bottom: 0; left: 0; width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 15px; }
+.sidebar-footer a { color: #bdbdbd; text-decoration: none; display: block; padding: 10px 0; }
+
+/* -------------------------------------------------------------------- */
+/* 3. Stat Cards/Charts/Profile Styles */
+/* -------------------------------------------------------------------- */
+.dashboard-title { font-weight: 600; }
+.profile-section { background-color: var(--card-bg); padding: 5px 15px; border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+.profile-circle { width: 30px; height: 30px; background-color: #3498db; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 14px; }
+.profile-role { color: #999; }
+.stat-card, .chart-card, .card { background-color: var(--card-bg); border: none; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
+.stat-card h3 { font-weight: 700; font-size: 1.8rem; margin-top: 5px; }
+.text-success { color: #28a745 !important; }
+.stat-card small, .chart-card small { color: #6c757d; }
+.chart-container { height: 300px; position: relative; }
+.pie-chart-container { height: 350px; display: flex; justify-content: center; align-items: center; }
+.pie-chart-container canvas { max-height: 250px; max-width: 250px; }
+.form-select, .btn-outline-secondary { border-color: var(--border-color) !important; }
+
+/* -------------------------------------------------------------------- */
+/* 4. Table/DataTables Styling (Crucial fixes for structure match) */
+/* -------------------------------------------------------------------- */
+
+.recent-signup-table {
+    margin-top: 15px !important;
+    border-collapse: collapse !important;
+}
+
+/* Ensure DataTables content respects the padding/borders of the image */
+.recent-signup-table th {
+    font-weight: 500;
+    color: #6c757d;
+    border-bottom: 1px solid var(--border-color) !important; /* Override DataTables default */
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.recent-signup-table td {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.recent-signup-table tbody tr:last-child td {
+    border-bottom: none !important; /* Remove border from last row */
+}
+
+.profile-initial {
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    color: #3498db;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.text-bg-success-custom {
+    background-color: var(--success-badge-bg) !important;
+    color: var(--success-badge-color) !important;
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: 0.375rem;
+}
+
+.text-bg-danger-custom {
+    background-color: #d88686 !important;
+    color: #a70808 !important;
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: 0.375rem;
+}
+
+.text-bg-warning-custom {
+    background-color: #caaf79 !important;
+    color: rgb(85, 58, 4) !important;
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: 0.375rem;
+}
+
+/* DataTables specific fixes for alignment and look */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+    padding: 0 1rem !important; /* Align DataTables controls with the card padding */
+}
+
+/* Hide the default DataTables borders */
+table.dataTable.no-footer {
+    border-bottom: none !important;
+}
+
+
+/* -------------------------------------------------------------------- */
+/* 5. Table/DataTables Styling (REUSED) */
+/* -------------------------------------------------------------------- */
+.users-table th, .users-table td {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+.users-table th {
+    font-weight: 500;
+    color: #6c757d;
+    border-bottom: 1px solid var(--border-color) !important; 
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.users-table td, .table-row td {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.users-table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+.profile-initial {
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    color: #3498db;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* DataTables specific fixes */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+    /* Padding adjustments for Bootstrap 5 wrapper */
+    padding: 0 1rem !important; 
+}
+
+/* Ensure the pagination wrapper aligns correctly and is visible */
+div.dataTables_wrapper div.dataTables_paginate {
+    margin-top: 1rem;
+}
+/* Hide the default DataTables search box element */
+div.dataTables_wrapper div.dataTables_filter {
+    display: none;
+}
+
+table.dataTable.no-footer {
+    border-bottom: none !important;
+}
+
+
+
+/* ... (REUSED CSS styles for layout, sidebar, header, etc.) ... */
+
+/* -------------------------------------------------------------------- */
+/* 4. User Profile Specific Styles (UPDATED) */
+/* -------------------------------------------------------------------- */
+
+.profile-card {
+    border-radius: 10px;
+}
+
+/* Profile Image Box Styling */
+.profile-image-box {
+    width: 150px;
+    height: 150px;
+    background-color: #f0f0f0; 
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-image-box img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Detail Grid Styling (for Name, Email, etc.) */
+.detail-grid p {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* KYC Status Badge (Not Verified) and General Badges */
+.bg-danger-subtle {
+    background-color: #f8d7da !important; /* Light red background */
+}
+.text-danger {
+    color: #842029 !important; /* Dark red text */
+}
+/* NEW: Success/Active Badge */
+.bg-success-subtle {
+    background-color: var(--success-badge-bg) !important;
+}
+.text-success {
+    color: var(--success-badge-color) !important;
+}
+
+/* Referral Stats Styling */
+.referral-stats .stat-box {
+    background-color: #f8f9fa; /* Light gray box background */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+.referral-stats h4 {
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+/* Tab Navigation Styling (NEW) */
+.profile-nav-tabs .nav-link {
+    color: #6c757d;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.5rem 1rem;
+}
+.profile-nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    background-color: transparent;
+    font-weight: 600;
+}
+.profile-nav-tabs {
+    border-bottom: 1px solid var(--border-color);
+}
+.tab-content {
+    padding-top: 15px;
+}
+
+
+/* -------------------------------------------------------------------- */
+/* 5. Transactions/Referrals Table Styling (REUSED base) */
+/* -------------------------------------------------------------------- */
+/* Base table styles applied to both tables in tabs */
+.transactions-table th, .referrals-table th {
+    font-weight: 500;
+    color: #6c757d;
+    border-bottom: 1px solid var(--border-color) !important; 
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+.transactions-table td, .referrals-table td {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+.transactions-table tbody tr:last-child td, .referrals-table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+.text-bg-success-custom {
+    background-color: var(--success-badge-bg) !important;
+    color: var(--success-badge-color) !important;
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: 0.375rem;
+}
+
+/* DataTables specific fixes */
+div.dataTables_wrapper div.dataTables_paginate {
+    margin-top: 1rem;
+}
+div.dataTables_wrapper div.dataTables_filter label {
+    font-weight: 400; /* Ensure search label isn't bold */
+}
+
+
+/* ... (All REUSED CSS styles from previous steps) ... */
+
+/* -------------------------------------------------------------------- */
+/* 5. Transaction Offcanvas Styling (IMPROVED STYLING) */
+/* -------------------------------------------------------------------- */
+
+.transaction-offcanvas {
+    width: 400px;
+    background-color: #fff; /* Ensure it's white */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 576px) {
+    .transaction-offcanvas {
+        width: 100%;
+    }
+}
+
+.transaction-offcanvas .transaction-offcanvas-header {
+    /* Use padding to create space around the title/close button */
+    padding: 1.5rem 1.5rem 1rem 1.5rem; 
+    border-bottom: 1px solid var(--border-color);
+}
+.transaction-offcanvas .offcanvas-body {
+    padding: 0; /* Remove default body padding to control inner padding */
+    display: flex;
+    flex-direction: column;
+}
+
+.transaction-offcanvas .detail-section {
+    padding: 0 1.5rem; /* Apply consistent padding to sections */
+}
+
+/* Section titles for Details, Attachment, etc. */
+.transaction-offcanvas .section-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #6c757d !important;
+}
+
+/* Detail grid items (labels and values) */
+.transaction-offcanvas .detail-grid p {
+    font-weight: 600 !important; /* Bold font for values */
+    color: var(--text-color);
+}
+.transaction-offcanvas .detail-grid label {
+    font-size: 0.7rem; /* Smaller font for labels */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Horizontal Rule separation */
+.transaction-offcanvas hr {
+    margin: 1rem 0;
+    border-color: #f0f0f0;
+}
+
+/* Hash input styling */
+.transaction-offcanvas .input-group .form-control {
+    background-color: #f8f9fa !important; /* Light background for the hash input */
+    border-color: var(--border-color);
+}
+.transaction-offcanvas .copy-btn {
+    border-left: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Attachment button */
+.transaction-offcanvas .attachment-btn {
+    width: 100%;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+}
+
+/* Footer action buttons */
+.transaction-offcanvas-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #f0f0f0;
+    background-color: #fff; /* Ensure footer background is solid white */
+}
+
+
+/* -------------------------------------------------------------------- */
+/* 4. KYC List Page Styling (NEW) */
+/* -------------------------------------------------------------------- */
+
+.kyc-list-table th, .kyc-list-table td {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+.kyc-list-table th {
+    font-weight: 500;
+    color: #6c757d;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+.kyc-list-table td {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+.kyc-list-table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+.kyc-list-table tbody tr {
+    cursor: pointer;
+}
+
+.image-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 500;
+}
+.kyc-detail-btn:hover {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+}
+
+
+/* -------------------------------------------------------------------- */
+/* 5. KYC Detail Offcanvas Styling (REUSED/ADAPTED from Transaction Offcanvas) */
+/* -------------------------------------------------------------------- */
+
+.kyc-offcanvas {
+    width: 400px;
+    background-color: #fff;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 576px) {
+    .kyc-offcanvas {
+        width: 100%;
+    }
+}
+
+.kyc-offcanvas .transaction-offcanvas-header {
+    padding: 1.5rem 1.5rem 1rem 1.5rem; 
+    border-bottom: 1px solid var(--border-color);
+}
+.kyc-offcanvas .offcanvas-body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.kyc-offcanvas .detail-section {
+    padding: 0 1.5rem;
+}
+
+/* Section titles for Details, Attachment, etc. */
+.kyc-offcanvas .section-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #6c757d !important;
+}
+
+/* Detail grid items (labels and values) */
+.kyc-offcanvas .detail-grid p {
+    font-weight: 600 !important;
+    color: var(--text-color);
+}
+.kyc-offcanvas .detail-grid label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Attachment List Styling */
+.kyc-offcanvas .attachment-view-btn {
+    border-radius: 6px;
+    padding: 0.25rem 1rem;
+    font-weight: 500;
+}
+
+/* Horizontal Rule separation */
+.kyc-offcanvas hr {
+    margin: 1rem 0;
+    border-color: #f0f0f0;
+}
+
+/* Footer action buttons */
+.kyc-offcanvas .offcanvas-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #f0f0f0;
+    background-color: #fff;
+}
+
+
+
+
+
+/* ... (All REUSED CSS styles from previous steps) ... */
+
+/* -------------------------------------------------------------------- */
+/* 6. Content Editor Page Styling (NEW/Summernote compatibility) */
+/* -------------------------------------------------------------------- */
+
+.editor-card {
+    padding-bottom: 2rem !important; /* Extra space at the bottom for the fixed footer area if needed */
+}
+
+/* Specific Summernote styling fixes (if necessary, though light version is usually good) */
+/* Ensuring the toolbar buttons are consistent with our theme */
+.note-editor.note-frame .note-toolbar .btn,
+.note-editor.note-frame .note-statusbar .btn {
+    border-radius: 0.375rem; /* Match Bootstrap default rounding */
+}
+
+/* Ensure the textarea has consistent styling */
+#summernote {
+    border-radius: 0.375rem;
+    border-color: var(--border-color);
+}
+
+
+
+/* ... (All REUSED CSS styles from previous steps, including section 7 from the last response) ... */
+
+/* Ensure Summernote blends into the card background */
+.broadcast-card .note-editor.note-frame {
+    border: 1px solid var(--border-color); /* Maintain border visibility */
+    border-radius: 0.375rem;
+}
+.broadcast-card .note-editor .note-editing-area .note-editable {
+    padding: 1rem;
+}
+
+
+
+
+/* ... (REUSED CSS styles) ... */
+
+/* -------------------------------------------------------------------- */
+/* 8. Settings Page Styling (UPDATED) */
+/* -------------------------------------------------------------------- */
+
+.settings-section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+.settings-section-title:first-of-type {
+    margin-top: 0;
+}
+
+/* General form control styling for the settings page */
+.settings-card .form-control,
+.settings-card .form-select {
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+    background-color: #fff;
+    font-weight: 500;
+}
+
+.settings-card .form-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 400;
+}
+
+.settings-card .form-control:focus,
+.settings-card .form-select:focus {
+    border-color: var(--primary-color-light); 
+    box-shadow: 0 0 0 0.15rem rgba(45, 113, 220, 0.25);
+}
+
+/* New: Styling for Profile/Password Buttons */
+.settings-btn {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem !important;
+}
+
+/* "Add new" links */
+.add-new-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.add-new-link:hover {
+    text-decoration: underline;
+}
+
+/* Payment (Wallet/Broker) list specific styling */
+.payment-list .payment-item:last-child .border-bottom {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Exchange Rate Input Group Styling */
+.input-group .currency-symbol {
+    background-color: #f8f9fa; /* Light background for the symbol */
+    color: #495057;
+    font-weight: 600;
+    border-color: var(--border-color);
+}
+
+/* Notification switch styling (2FA) */
+.notification-list .form-switch {
+    padding-left: 3.5rem; 
+}
+.notification-list .form-check-input {
+    height: 1.25em;
+    width: 2.25em;
+    margin-top: 0.25em;
+    border-radius: 2.25em;
+}
+
+/* Save button at the bottom */
+.settings-save-btn {
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+}
+
+
+/* -------------------------------------------------------------------- */
+/* 9. Modal Styling (Updated for consistency) */
+/* -------------------------------------------------------------------- */
+
+#newAssetModal .modal-body .form-control,
+#newAssetModal .modal-body .form-select,
+#newBrokerModal .modal-body .form-control,
+#newBrokerModal .modal-body .form-select {
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+#newAssetModal .modal-body .form-label,
+#newBrokerModal .modal-body .form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+}

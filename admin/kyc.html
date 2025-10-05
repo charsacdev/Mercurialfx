@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercurial - KYC Verification</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="shortcut icon" href="../img/icon.png">
+</head>
+<body>
+
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">
+                <img src="../img/headerlogo.png" class="img-fluid">
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="sidebar-nav">
+                <ul class="list-unstyled">
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                    <li class="with-badge"><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions <span class="badge text-bg-secondary ms-2">18</span></a></li>
+                    <li class="active with-badge"><a href="kyc.html"><i class="fas fa-check-circle"></i> KYC <span class="badge text-bg-secondary ms-2">30</span></a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-broadcast-tower"></i> Broadcast</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        <div class="d-none d-lg-block sidebar-desktop bg-dark text-white p-3 vh-100 position-fixed">
+            <div class="mercurial-logo mb-4">
+                <h4 class="text-white">
+                    <img src="../img/headerlogo.png" class="img-fluid">
+                </h4>
+            </div>
+            <div class="sidebar-nav">
+                <ul class="list-unstyled">
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                    <li class="with-badge"><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions <span class="badge text-bg-secondary ms-2">18</span></a></li>
+                    <li class="active with-badge"><a href="kyc.html"><i class="fas fa-check-circle"></i> KYC <span class="badge text-bg-secondary ms-2">30</span></a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-broadcast-tower"></i> Broadcast</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+
+        <div class="flex-grow-1 p-4 content-area">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <button class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 class="dashboard-title">&nbsp;KYC</h2>
+                <div class="d-flex align-items-center profile-section ms-auto ms-lg-0">
+                    <div class="profile-circle me-2">C</div>
+                    <div class="d-none d-sm-block">
+                        <small class="d-block profile-name">Charsac Tech.</small>
+                        <small class="d-block profile-role">Admin</small>
+                    </div>
+                    <i class="fas fa-angle-down text-muted ms-2 d-none d-sm-block"></i>
+                </div>
+            </div>
+
+            <div class="card p-3 shadow-sm border-0">
+                
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+                    
+                    <div class="search-box mb-3 mb-md-0 me-md-3 w-100">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                            <input type="text" class="form-control shadow-none border-start-0" placeholder="Search" aria-label="Search" id="kycSearchInput">
+                        </div>
+                    </div>
+                    
+                    </div>
+
+                <div class="table-responsive">
+                    <table id="kycTable" class="table align-middle kyc-list-table w-100">
+                        <thead>
+                            <tr>
+                                <th><input class="form-check-input" type="checkbox"></th>
+                                <th>User name</th>
+                                <th>ID Type</th>
+                                <th>Number</th>
+                                <th>Front Image</th>
+                                <th>Back Image</th>
+                                <th>Date</th>
+                                <th></th> </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row" data-id="1">
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td><div class="d-flex align-items-center"><div class="profile-initial me-2">J</div><span>John Doe</span></div></td>
+                                <td>NIN</td>
+                                <td>8764747647</td>
+                                <td><a href="#" class="image-link" target="_blank">front.jpg</a></td>
+                                <td><a href="#" class="image-link" target="_blank">back.jpg</a></td>
+                                <td>Aug 20, 2025 | 11:06AM</td>
+                                <td>
+                                    <button class="btn btn-sm btn-link text-dark kyc-detail-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#kycDetailOffcanvas">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                             <tr class="table-row" data-id="2">
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td><div class="d-flex align-items-center"><div class="profile-initial me-2">J</div><span>John Doe</span></div></td>
+                                <td>Drivers License</td>
+                                <td>8764747647</td>
+                                <td><a href="#" class="image-link" target="_blank">front.jpg</a></td>
+                                <td><a href="#" class="image-link" target="_blank">back.jpg</a></td>
+                                <td>Aug 20, 2025 | 11:06AM</td>
+                                <td>
+                                    <button class="btn btn-sm btn-link text-dark kyc-detail-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#kycDetailOffcanvas">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="table-row" data-id="3">
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td><div class="d-flex align-items-center"><div class="profile-initial me-2">J</div><span>John Doe</span></div></td>
+                                <td>Voters Card</td>
+                                <td>8764747647</td>
+                                <td><a href="#" class="image-link" target="_blank">front.jpg</a></td>
+                                <td><a href="#" class="image-link" target="_blank">back.jpg</a></td>
+                                <td>Aug 20, 2025 | 11:06AM</td>
+                                <td>
+                                    <button class="btn btn-sm btn-link text-dark kyc-detail-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#kycDetailOffcanvas">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end kyc-offcanvas" tabindex="-1" id="kycDetailOffcanvas" aria-labelledby="kycDetailOffcanvasLabel">
+        <div class="offcanvas-header transaction-offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="kycDetailOffcanvasLabel">KYC Detail</h5>
+            <button type="button" class="btn-close text-reset shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column p-4">
+            
+            <div class="detail-section mb-4">
+                <h6 class="text-muted fw-bold mb-3 section-title">Details</h6>
+                <div class="row detail-grid">
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">User name</label>
+                        <p class="mb-0 fw-semibold">John Doe</p>
+                    </div>
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">ID Type</label>
+                        <p class="mb-0 fw-semibold">NIN</p>
+                    </div>
+                    <div class="col-12 detail-item mb-3">
+                        <label class="text-muted d-block small">ID Number</label>
+                        <p class="mb-0 fw-semibold">43563129643</p>
+                    </div>
+                    <div class="col-12 detail-item mb-3">
+                        <label class="text-muted d-block small">Address</label>
+                        <p class="mb-0 fw-semibold">14 independence layout</p>
+                    </div>
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">City</label>
+                        <p class="mb-0 fw-semibold">Enugu</p>
+                    </div>
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">State/Province</label>
+                        <p class="mb-0 fw-semibold">Enugu</p>
+                    </div>
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">Postal Code</label>
+                        <p class="mb-0 fw-semibold">324323</p>
+                    </div>
+                    <div class="col-6 detail-item mb-3">
+                        <label class="text-muted d-block small">Country</label>
+                        <p class="mb-0 fw-semibold">Nigeria</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-3">
+
+            <div class="detail-section mb-auto">
+                <h6 class="text-muted fw-bold mb-3 section-title">Attachment</h6>
+                
+                <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                    <p class="mb-0 fw-normal">Selfie with ID</p>
+                    <button class="btn btn-sm btn-outline-secondary attachment-view-btn">View</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                    <p class="mb-0 fw-normal">ID image (front)</p>
+                    <button class="btn btn-sm btn-outline-secondary attachment-view-btn">View</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                    <p class="mb-0 fw-normal">ID image (back)</p>
+                    <button class="btn btn-sm btn-outline-secondary attachment-view-btn">View</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                    <p class="mb-0 fw-normal">Utility bill image</p>
+                    <button class="btn btn-sm btn-outline-secondary attachment-view-btn">View</button>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between pt-3 border-top offcanvas-footer">
+                <button class="btn btn-outline-danger me-2 flex-grow-1 p-2">Reject</button>
+                <button class="btn btn-primary flex-grow-1 p-2">Confirm</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // 1. DataTables Initialization
+            const kycTable = $('#kycTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                lengthChange: false, 
+                pageLength: 10,
+                dom: '<"top"l<"clear">><"table-responsive"t><"bottom"ip<"clear">>',
+                columnDefs: [
+                    { orderable: false, targets: [0, 7, 4, 5] }, // Checkbox, Actions, and Image columns
+                    { width: '20px', targets: 0 },
+                    { width: '40px', targets: 7 }, 
+                ],
+                // Manually connect the custom search input to the DataTables filter
+                initComplete: function () {
+                    var api = this.api();
+                    $('#kycSearchInput').on('keyup', function () {
+                        api.search(this.value).draw();
+                    });
+                    // Hide the default DataTables search filter:
+                    $('.dataTables_filter').hide(); 
+                }
+            });
+            
+            // 2. Offcanvas Logic and Row Click
+            
+            // Logic to open offcanvas when clicking the table row, but excluding specific elements
+            $('#kycTable tbody').on('click', 'tr.table-row', function (e) {
+                // Check if the click target is a checkbox, button, link, or inside one
+                if (!$(e.target).is('input[type="checkbox"], button, a') && !$(e.target).closest('button, a').length) {
+                    var offcanvasElement = document.getElementById('kycDetailOffcanvas');
+                    var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+                    // In a real application, you'd load dynamic data here
+                    offcanvas.show();
+                }
+            });
+
+            // CRITICAL: Offcanvas Close Logic (Same as Transactions page)
+            var offcanvasElement = document.getElementById('kycDetailOffcanvas');
+            
+            offcanvasElement.addEventListener('show.bs.offcanvas', function () {
+                // On show, explicitly close any open modals
+                $('.modal.show').modal('hide');
+            });
+            
+            offcanvasElement.addEventListener('hidden.bs.offcanvas', function () {
+                // When offcanvas is hidden, ensure the mobile sidebar is also closed if it was open
+                var sidebarOffcanvasEl = document.getElementById('sidebarOffcanvas');
+                var sidebarOffcanvas = bootstrap.Offcanvas.getInstance(sidebarOffcanvasEl);
+                if (sidebarOffcanvas) {
+                    sidebarOffcanvas.hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

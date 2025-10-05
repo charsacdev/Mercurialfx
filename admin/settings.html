@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercurial - Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="shortcut icon" href="../img/icon.png">
+</head>
+<body>
+
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">
+                <img src="../img/headerlogo.png" class="img-fluid">
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="sidebar-nav">
+                <ul class="list-unstyled">
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                    <li class="with-badge"><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions <span class="badge text-bg-secondary ms-2">18</span></a></li>
+                    <li class="with-badge"><a href="kyc.html"><i class="fas fa-check-circle"></i> KYC <span class="badge text-bg-secondary ms-2">30</span></a></li>
+                    <li><a href="privacy_policy.html"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                    <li><a href="terms_of_service.html"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="broadcast.html"><i class="fas fa-broadcast-tower"></i> Broadcast</a></li>
+                    <li class="active"><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        <div class="d-none d-lg-block sidebar-desktop bg-dark text-white p-3 vh-100 position-fixed">
+            <div class="mercurial-logo mb-4">
+                <h4 class="text-white">
+                    <img src="../img/headerlogo.png" class="img-fluid">
+                </h4>
+            </div>
+            <div class="sidebar-nav">
+                <ul class="list-unstyled">
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                    <li class="with-badge"><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions <span class="badge text-bg-secondary ms-2">18</span></a></li>
+                    <li class="with-badge"><a href="kyc.html"><i class="fas fa-check-circle"></i> KYC <span class="badge text-bg-secondary ms-2">30</span></a></li>
+                    <li><a href="privacy_policy.html"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                    <li><a href="terms_of_service.html"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="broadcast.html"><i class="fas fa-broadcast-tower"></i> Broadcast</a></li>
+                    <li class="active"><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+
+        <div class="flex-grow-1 p-4 content-area">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <button class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 class="dashboard-title">&nbsp;Settings</h2>
+                <div class="d-flex align-items-center profile-section ms-auto ms-lg-0">
+                    <div class="profile-circle me-2">C</div>
+                    <div class="d-none d-sm-block">
+                        <small class="d-block profile-name">Charsac Tech.</small>
+                        <small class="d-block profile-role">Admin</small>
+                    </div>
+                    <i class="fas fa-angle-down text-muted ms-2 d-none d-sm-block"></i>
+                </div>
+            </div>
+
+            <div class="card p-4 shadow-sm border-0 settings-card">
+                  
+                   <!--Profile Settings-->
+                    <h4 class="mb-4 settings-section-title">Profile Settings</h4>
+                    <form action="#" method="POST">
+                    
+                        <div class="row mb-5">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" value="Char" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name" value="Tech" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="emailAddress" class="form-label">Email Address</label>
+                                <input type="email" name="emailAddress" class="form-control" id="emailAddress" placeholder="Email Address" value="admin@mercurial.com" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="phoneNumber" class="form-label">Phone Number</label>
+                                <input type="tel" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone Number" value="+234 800 000 0000" required>
+                            </div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+
+
+                    <!--Security Settings-->
+                    <h4 class="mb-4 settings-section-title">Security Settings</h4>
+                    <form action="#" method="POST">
+                        <div class="row mb-5">
+                            <div class="col-md-6 mb-3">
+                                <label for="newPassword" class="form-label">New Password</label>
+                                <input type="password" name="newPassword" class="form-control" id="newPassword" placeholder="New Password" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                            </div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                        </div>
+                    </form>
+
+                    
+                    <!--Form Details-->
+                    <h4 class="mb-4 settings-section-title">Bank Account Details</h4>
+                    <form action="#" method="POST">
+                        <div class="row mb-5">
+                            <div class="col-md-4 mb-3">
+                                <label for="bankAccountName" class="form-label">Account Name</label>
+                                <input type="text" name="bankAccountName" class="form-control" id="bankAccountName" placeholder="Account Name" value="John Doe" required>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="bankAccountNumber" class="form-label">Account Number</label>
+                                <input type="text" name="bankAccountNumber" class="form-control" id="bankAccountNumber" placeholder="Account Number" value="3178642485" required>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="bankName" class="form-label">Bank Name</label>
+                                <input type="text" name="bankName" class="form-control" id="bankName" placeholder="Bank Name" value="First Bank" required>
+                            </div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Update Bank Details</button>
+                        </div>
+                    </form>
+
+
+
+                    <h4 class="d-flex justify-content-between align-items-center mb-4 settings-section-title">
+                        Crypto Wallet Addresses
+                        <a href="#" class="add-new-link" data-bs-toggle="modal" data-bs-target="#newAssetModal">Add new</a>
+                    </h4>
+                    <div class="payment-list mb-5">
+                        <div class="row payment-item align-items-center mb-3 pb-3 border-bottom">
+                            <div class="col-md-5 col-8">
+                                <p class="mb-0 fw-semibold text-truncate" title="385f75328b4g3478y67hgen547864bhteuryt">385f75328b4g3478y67h...</p>
+                            </div>
+                            <div class="col-md-2 col-4 text-end text-md-start">
+                                <span class="badge text-bg-secondary">USDT</span>
+                            </div>
+                            <div class="col-md-5 col-12 text-md-end text-muted small mt-2 mt-md-0">
+                                <a href="#" class="text-danger small me-3">Remove</a>
+                                <span class="fw-semibold">Bitcoin</span>
+                            </div>
+                        </div>
+                        <div class="row payment-item align-items-center mb-3 pb-3 border-bottom">
+                            <div class="col-md-5 col-8">
+                                <p class="mb-0 fw-semibold text-truncate" title="385f75328b4g3478y67hgen547864bhteuryt">385f75328b4g3478y67h...</p>
+                            </div>
+                            <div class="col-md-2 col-4 text-end text-md-start">
+                                <span class="badge text-bg-secondary">USDT</span>
+                            </div>
+                            <div class="col-md-5 col-12 text-md-end text-muted small mt-2 mt-md-0">
+                                <a href="#" class="text-danger small me-3">Remove</a>
+                                <span class="fw-semibold">Solana</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h4 class="d-flex justify-content-between align-items-center mb-4 settings-section-title">
+                        Brokers
+                        <a href="#" class="add-new-link" data-bs-toggle="modal" data-bs-target="#newBrokerModal">Add new</a>
+                    </h4>
+                    <div class="payment-list mb-5"> <div class="row payment-item align-items-center mb-3 pb-3 border-bottom">
+                            <div class="col-md-6">
+                                <p class="mb-0 fw-semibold">Deriv</p>
+                            </div>
+                            <div class="col-md-6 text-md-end text-muted small mt-2 mt-md-0">
+                                <a href="#" class="text-danger small me-3">Remove</a>
+                                <span class="fw-semibold">Default</span>
+                            </div>
+                        </div>
+                         <div class="row payment-item align-items-center mb-3 pb-3 border-bottom">
+                            <div class="col-md-6">
+                                <p class="mb-0 fw-semibold">WellTrade</p>
+                            </div>
+                            <div class="col-md-6 text-md-end text-muted small mt-2 mt-md-0">
+                                <a href="#" class="text-danger small me-3">Remove</a>
+                                <span class="fw-semibold">Standard</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!--Exchange Rate-->
+                    <h4 class="mb-4 settings-section-title">Exchange Rate</h4>
+                    <form action="" class="mb-5">
+                        <!-- CSRF Token if Laravel -->
+                        <!-- @csrf -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="exchangeRate" class="form-label">NGN per USD ($)</label>
+                                <div class="input-group shadow-sm rounded-3">
+                                    <span class="input-group-text currency-symbol fw-bold">₦</span>
+                                    <input type="number" 
+                                        class="form-control" 
+                                        id="exchangeRate" 
+                                        name="exchangeRate"
+                                        placeholder="1500" 
+                                        value="1500"
+                                        min="1"
+                                        step="any">
+                                    <span class="input-group-text currency-symbol fw-bold">/$</span>
+                                </div>
+                                <small class="form-text text-muted">
+                                    Enter the current exchange rate for NGN to USD.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary px-4">
+                                Save Exchange Rate
+                            </button>
+                        </div>
+                    </form>
+
+
+                    
+
+                    <h4 class="mb-4 settings-section-title">Notifications</h4>
+                    <div class="notification-list mb-5">
+                        <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <div>
+                                <p class="mb-0 fw-semibold">Enable Two-Factor Authentication (2FA)</p>
+                                <small class="text-muted">Require 2FA code for login and sensitive actions</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="enable2FA" checked>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    
+                    <div class="d-flex justify-content-end pt-3">
+                        <button type="submit" class="btn btn-primary settings-save-btn">Save Changes</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newAssetModal" tabindex="-1" aria-labelledby="newAssetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="newAssetModalLabel">New Crypto Asset</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <form>
+                        <div class="mb-3">
+                            <label for="selectAsset" class="form-label">Select Asset (e.g., USDT)</label>
+                            <select class="form-select" id="selectAsset">
+                                <option selected>USDT</option>
+                                <option>Bitcoin</option>
+                                <option>Ethereum</option>
+                                <option>Solana</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="assetAddress" class="form-label">Enter Wallet Address</label>
+                            <input type="text" class="form-control" id="assetAddress" placeholder="e.g., 6vte83noda8hn2398h3nd" value="">
+                        </div>
+                        
+                        <div class="d-grid">
+                             <button type="submit" class="btn btn-primary btn-lg">Done</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newBrokerModal" tabindex="-1" aria-labelledby="newBrokerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="newBrokerModalLabel">Add New Broker</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <form>
+                        <div class="mb-3">
+                            <label for="brokerName" class="form-label">Broker Name</label>
+                            <input type="text" class="form-control" id="brokerName" placeholder="e.g., FX Pro, Deriv" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="brokerType" class="form-label">Broker Type / Label</label>
+                            <input type="text" class="form-control" id="brokerType" placeholder="e.g., Standard, ECN, etc." required>
+                        </div>
+                        
+                        <div class="d-grid">
+                             <button type="submit" class="btn btn-primary btn-lg">Done</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Logic for handling the form submission
+            $('#settingsForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                console.log("Saving Settings...");
+                
+                // Temporary feedback and button change
+                const saveBtn = $('.settings-save-btn');
+                saveBtn.text('Saving...').prop('disabled', true);
+
+                setTimeout(() => {
+                    saveBtn.text('Changes Saved!').addClass('btn-success').removeClass('btn-primary');
+                    
+                    // Reset after a delay
+                    setTimeout(() => {
+                        saveBtn.text('Save Changes').addClass('btn-primary').removeClass('btn-success').prop('disabled', false);
+                    }, 2000);
+                }, 1500);
+            });
+            
+            // Modal submission handlers (for demonstration)
+            $('#newAssetModal form').on('submit', function(e) {
+                e.preventDefault();
+                $('#newAssetModal').modal('hide');
+                alert("New Crypto Asset Added: " + $('#selectAsset').val());
+            });
+
+            $('#newBrokerModal form').on('submit', function(e) {
+                e.preventDefault();
+                $('#newBrokerModal').modal('hide');
+                alert("New Broker Added: " + $('#brokerName').val() + " (" + $('#brokerType').val() + ")");
+            });
+        });
+    </script>
+</body>
+</html>

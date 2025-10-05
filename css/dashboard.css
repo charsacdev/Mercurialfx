@@ -314,6 +314,7 @@ nav{
       color:#000;
       border-radius:5px;
       border: 0px !important;
+      font-size: 14px !important;
     }
     .pay-info-input,.pay-info-input:focus{
       background-color: #F0F0F0;
