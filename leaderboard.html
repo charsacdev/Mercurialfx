@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Leaderboard | Mercurial Payments</title>
+
+  <meta name="description" content="See the top depositors, withdrawers and referrers on Mercurial Payments each week. Rankings are pseudonymous — real names are never shown.">
+  <link rel="canonical" href="https://www.mercurialpayments.com/leaderboard.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mercurialpayments.com/leaderboard.html">
+  <meta property="og:title" content="Weekly Leaderboard | Mercurial Payments">
+  <meta property="og:description" content="Live weekly rankings for deposits, withdrawals and referrals. Every payout on this board was completed and confirmed.">
+
+  <!-- Fonts & CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/privacy.css" rel="stylesheet">
+  <link href="css/leaderboard.css" rel="stylesheet">
+  <link rel="shortcut icon" href="img/icon.png">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.png" alt="Logo" height="32">
+    </a>
+
+    <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Desktop Menu -->
+    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#benefit">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#howitworks">How it works</a></li>
+        <li class="nav-item"><a class="nav-link active fw-semibold" href="leaderboard.html">Leaderboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+      </ul>
+      <a href="register.html" class="text-decoration-none">
+        <button class="btn btn-primary px-4">Get started</button>
+      </a>
+    </div>
+
+    <!-- Offcanvas Menu (mobile) -->
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" style="background-color:#000;">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-light">Mercurial</h5>
+        <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="index.html#benefit">Features</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="index.html#howitworks">How it works</a></li>
+          <li class="nav-item"><a class="nav-link text-white fw-semibold" href="leaderboard.html">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="index.html#about">About</a></li>
+        </ul>
+        <a href="register.html" class="text-decoration-none">
+          <button class="btn btn-primary px-4">Get started</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-section-privacy position-relative py-5">
+  <div class="geometric-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+
+  <div class="container position-relative text-center py-5">
+    <h1 class="display-3 fw-bold text-white mb-3">Weekly Leaderboard</h1>
+    <p class="fs-5 text-light-purple mb-4">
+      Five boards. Fresh every Monday. Real payouts, no real names.
+    </p>
+    <div class="lb-scope d-inline-block">
+      <div class="lb-countdown">
+        <span class="lb-pulse"></span>
+        <span class="small">Season resets in</span>
+        <span class="lb-clock" data-lb-clock>--</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Leaderboard -->
+<section class="py-5 bg-light">
+  <div class="container lb-scope" id="publicLeaderboard">
+
+    <!-- Board switcher -->
+    <div class="lb-tabs mb-4" role="tablist" aria-label="Leaderboard categories">
+      <button class="lb-tab" role="tab" data-lb-board="deposit-count">Deposits &middot; count</button>
+      <button class="lb-tab" role="tab" data-lb-board="deposit-volume">Deposits &middot; volume</button>
+      <button class="lb-tab" role="tab" data-lb-board="withdrawal-count">Withdrawals &middot; count</button>
+      <button class="lb-tab" role="tab" data-lb-board="withdrawal-volume">Withdrawals &middot; volume</button>
+      <button class="lb-tab" role="tab" data-lb-board="referrals">Referrals</button>
+    </div>
+
+    <p class="text-muted mb-4" data-lb-blurb></p>
+
+    <!-- Top three -->
+    <div class="lb-podium" data-lb-podium></div>
+
+    <!-- Ranks 4+ -->
+    <div class="lb-list mb-4" data-lb-list></div>
+
+    <!-- Privacy note -->
+    <div class="lb-note d-flex align-items-start gap-3 mb-4">
+      <i class="bi bi-shield-lock fs-5"></i>
+      <div>
+        <strong class="d-block text-dark mb-1">Why you only see nicknames</strong>
+        Members appear under a pseudonymous handle they choose at signup. We never publish a legal
+        name, account number or location next to a transaction amount — publicly linking a real
+        person to a payout figure would put them at risk. Only our compliance team can resolve a
+        handle to an account, and every one of those lookups is logged.
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center py-4">
+      <h3 class="fw-semibold mb-3">Want your handle on this board?</h3>
+      <p class="text-muted mb-4">Create an account, verify once, and you are entered from your first confirmed transaction.</p>
+      <a href="register.html" class="text-decoration-none">
+        <button class="btn btn-primary btn-lg me-3 mb-3">Get started</button>
+      </a>
+      <a href="rules.html" class="text-decoration-none">
+        <button class="btn btn-outline-primary btn-lg mb-3">Read the rules</button>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-white py-5">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-3 mb-4">
+        <div class="d-flex align-items-center mb-4">
+          <div class="logo-icon rounded d-flex align-items-center justify-content-center me-2">
+            <img src="img/logo-footer.png" class="img-fluid">
+          </div>
+        </div>
+        <div class="text-light">
+          <p class="mb-2">+234 708 423 4532</p>
+          <p class="mb-0">support@mercurialfx.com</p>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="fw-semibold mb-3">Quick Links</h5>
+        <div class="d-flex flex-column">
+          <a href="index.html#benefit" class="text-light text-decoration-none mb-2 hover-white">Features</a>
+          <a href="index.html#about" class="text-light text-decoration-none mb-2 hover-white">About Us</a>
+          <a href="leaderboard.html" class="text-light text-decoration-none mb-2 hover-white">Leaderboard</a>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="mt-4">
+          <a href="rules.html" class="text-light text-decoration-none d-block mb-2 hover-white">Leaderboard Rules</a>
+          <a href="terms.html" class="text-light text-decoration-none d-block mb-2 hover-white">Terms of Service</a>
+          <a href="privacy.html" class="text-light text-decoration-none d-block mb-2 hover-white">Privacy Policy</a>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="fw-semibold mb-3">Subscribe</h5>
+        <div class="input-group">
+          <input type="email" class="form-control bg-light text-dark shadow-none border-secondary"
+                 placeholder="Get product updates" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
+          <button class="btn btn-primary" type="button">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-top border-secondary pt-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex">
+            <a href="#" class="social-icon text-light rounded d-flex align-items-center justify-content-center me-3">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="social-icon text-light rounded d-flex align-items-center justify-content-center me-3">
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a href="#" class="social-icon text-light rounded d-flex align-items-center justify-content-center">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="text-light small">
+            <span class="d-block d-md-inline">A product of <span class="text-white fw-semibold">Mercurial</span></span>
+            <span class="d-block d-md-inline ms-md-4">&copy; 2025 Mercurial Fx. All rights reserved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/leaderboard.js"></script>
+<script>
+  // Public view: no signed-in member, so no pinned "your position" bar.
+  MercurialLeaderboard.init({
+    root: "#publicLeaderboard",
+    showYou: false,
+    initialBoard: "withdrawal-volume"
+  });
+
+  // The hero countdown lives in its own .lb-scope, so start it separately.
+  MercurialLeaderboard.init({ root: ".hero-section-privacy .lb-scope" });
+</script>
+</body>
+</html>

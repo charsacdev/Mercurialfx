@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard Rules | Mercurial Payments</title>
+
+  <meta name="description" content="How the Mercurial Payments weekly leaderboard works: what each board measures, what counts as a scoring transaction, handle rules, fair play and prizes.">
+  <link rel="canonical" href="https://www.mercurialpayments.com/rules.html">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/privacy.css" rel="stylesheet">
+  <link href="css/leaderboard.css" rel="stylesheet">
+  <link rel="shortcut icon" href="img/icon.png">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.png" alt="Logo" height="32">
+    </a>
+
+    <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#benefit">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#howitworks">How it works</a></li>
+        <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+      </ul>
+      <a href="register.html" class="text-decoration-none">
+        <button class="btn btn-primary px-4">Get started</button>
+      </a>
+    </div>
+
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" style="background-color:#000;">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-light">Mercurial</h5>
+        <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="index.html#benefit">Features</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="index.html#howitworks">How it works</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="leaderboard.html">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="index.html#about">About</a></li>
+        </ul>
+        <a href="register.html" class="text-decoration-none">
+          <button class="btn btn-primary px-4">Get started</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-section-privacy position-relative py-5">
+  <div class="geometric-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+  <div class="container position-relative text-center py-5">
+    <h1 class="display-2 fw-bold text-white mb-3">Leaderboard Rules</h1>
+    <p class="fs-5 text-light-purple">Last updated Sep 6th, 2025</p>
+  </div>
+</section>
+
+<!-- Body -->
+<section class="py-5 lb-scope">
+  <div class="container" style="max-width: 900px;">
+
+    <div class="lb-note d-flex align-items-start gap-3 mb-5">
+      <i class="bi bi-info-circle fs-5"></i>
+      <div>
+        The leaderboard is a recognition feature. It does not change your rate, your limits or the
+        order in which your transactions are processed. Nothing here is an inducement to transact
+        more than you intend to — please read section 9 before you compete.
+      </div>
+    </div>
+
+    <!-- 1 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">1</div>
+      <h4 class="fw-semibold mb-3">The weekly season</h4>
+      <p class="text-muted mb-2">
+        A season runs Monday 00:00 to Sunday 23:59, West Africa Time (WAT, UTC+1). Every board
+        resets to zero at the start of a new season — scores never carry over.
+      </p>
+      <p class="text-muted mb-0">
+        Final standings are locked 24 hours after a season closes. That delay exists so that
+        transactions still settling on Sunday night, and any reversals, are reflected before
+        winners are confirmed.
+      </p>
+    </div>
+
+    <!-- 2 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">2</div>
+      <h4 class="fw-semibold mb-3">The five boards</h4>
+      <p class="text-muted">Each board ranks independently. You can appear on all five at once.</p>
+      <div class="table-responsive">
+        <table class="table lb-table-compact align-middle">
+          <thead>
+            <tr>
+              <th>Board</th>
+              <th>What it measures</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-semibold text-nowrap">Deposits &middot; count</td>
+              <td class="text-muted">Number of confirmed deposits. Size is irrelevant — a ₦5,000 deposit scores the same as a ₦5,000,000 one.</td>
+            </tr>
+            <tr>
+              <td class="fw-semibold text-nowrap">Deposits &middot; volume</td>
+              <td class="text-muted">Total naira value of confirmed deposits that cleared the settlement window in section 4.</td>
+            </tr>
+            <tr>
+              <td class="fw-semibold text-nowrap">Withdrawals &middot; count</td>
+              <td class="text-muted">Number of payouts completed to your bank account or wallet.</td>
+            </tr>
+            <tr>
+              <td class="fw-semibold text-nowrap">Withdrawals &middot; volume</td>
+              <td class="text-muted">Total naira value paid out to you and confirmed received.</td>
+            </tr>
+            <tr>
+              <td class="fw-semibold text-nowrap">Referrals</td>
+              <td class="text-muted">Referred members who completed KYC <em>and</em> made at least one confirmed transaction. See section 6.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-muted mb-0 small">
+        Ties are broken by whoever reached the score first. If both boards and timestamps tie, the
+        higher position goes to the member with the longer account history.
+      </p>
+    </div>
+
+    <!-- 3 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">3</div>
+      <h4 class="fw-semibold mb-3">Only confirmed transactions score</h4>
+      <p class="text-muted mb-2">
+        A transaction scores when our team marks it <strong>Confirmed</strong> — not when you submit
+        it, and not when you click <em>I have paid</em>. Pending and rejected transactions are worth zero.
+      </p>
+      <p class="text-muted mb-0">
+        If a confirmed transaction is later reversed, charged back or found to be fraudulent, the
+        score is removed and the board is recalculated. This can move you down after the fact,
+        including after a season has closed but before standings lock.
+      </p>
+    </div>
+
+    <!-- 4 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">4</div>
+      <h4 class="fw-semibold mb-3">The 48-hour settlement window</h4>
+      <p class="text-muted mb-2">
+        A deposit scores on the volume boards only if the funds remain in your account for at least
+        48 hours. Money deposited and immediately withdrawn does not count toward deposit volume.
+      </p>
+      <p class="text-muted mb-0">
+        This exists so that nobody can cycle the same ₦1,000,000 in and out repeatedly to climb both
+        the deposit and withdrawal boards on money they never actually committed. Rapid in-and-out
+        movement of identical amounts is also a pattern we are required to monitor for other
+        reasons — see section 8.
+      </p>
+    </div>
+
+    <!-- 5 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">5</div>
+      <h4 class="fw-semibold mb-3">Weekly scoring cap</h4>
+      <p class="text-muted mb-0">
+        Each member can score a maximum of <strong>60 transactions per season</strong> across all
+        boards combined. The cap keeps the count boards a contest of consistency rather than one of
+        raw automation, and it limits how far any single member can run away with a season.
+      </p>
+    </div>
+
+    <!-- 6 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">6</div>
+      <h4 class="fw-semibold mb-3">What counts as a qualified referral</h4>
+      <p class="text-muted mb-2">A referral scores only when the person you invited has:</p>
+      <ul class="text-muted">
+        <li>signed up using your referral link or code;</li>
+        <li>completed KYC verification and been approved; and</li>
+        <li>completed at least one confirmed transaction of their own.</li>
+      </ul>
+      <p class="text-muted mb-0">
+        Signups alone are worth nothing. Referrals sharing a device, bank account, ID document or
+        payout destination with the referrer are treated as self-referrals, score zero, and are
+        grounds for removal under section 8.
+      </p>
+    </div>
+
+    <!-- 7 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">7</div>
+      <h4 class="fw-semibold mb-3">Your handle and your privacy</h4>
+      <p class="text-muted mb-2">
+        You appear on every public board under a pseudonymous handle. We never publish your legal
+        name, email, phone number, account number, bank or location alongside a transaction amount.
+      </p>
+      <p class="text-muted mb-2">
+        Handles must not impersonate Mercurial staff or another member, contain contact details,
+        or include offensive content. We reserve the right to reset a handle that breaks these
+        rules, and reserved words such as <em>admin</em>, <em>support</em> and <em>mercurial</em>
+        are blocked at signup.
+      </p>
+      <p class="text-muted mb-0">
+        Our compliance team can resolve a handle to an account where required for verification,
+        fraud investigation, payout of a prize, or a lawful request. Every such lookup is logged
+        against the staff member who performed it. Handles are visible to the public — choose one
+        that does not identify you, and treat anything you share elsewhere linking your handle to
+        your identity as your own disclosure.
+      </p>
+    </div>
+
+    <!-- 8 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">8</div>
+      <h4 class="fw-semibold mb-3">Fair play</h4>
+      <p class="text-muted mb-2">The following will remove you from a board, forfeit any prize, and may suspend your account:</p>
+      <ul class="text-muted mb-0">
+        <li>Operating more than one account, or transacting through another member's account.</li>
+        <li>Cycling the same funds to inflate count or volume (see section 4).</li>
+        <li>Splitting a single intended transaction into many smaller ones purely to raise a count.</li>
+        <li>Creating referral accounts you control, or paying people to sign up without genuine use.</li>
+        <li>Submitting false payment proof or a transaction hash that is not yours.</li>
+        <li>Any attempt to automate transactions against the platform.</li>
+      </ul>
+    </div>
+
+    <!-- 9 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">9</div>
+      <h4 class="fw-semibold mb-3">Please compete responsibly</h4>
+      <p class="text-muted mb-0">
+        Rankings reflect payment activity on Mercurial. They are not a measure of trading skill, and
+        a high position is not evidence that anyone is profitable — funds you move through this
+        platform are traded elsewhere, at your own risk. Never deposit money you cannot afford to
+        lose in order to climb a board. If competing is affecting how much you deposit, contact
+        support and we will remove you from the boards permanently on request.
+      </p>
+    </div>
+
+    <!-- 10 -->
+    <div class="lb-rule-card mb-4">
+      <div class="lb-rule-num">10</div>
+      <h4 class="fw-semibold mb-3">Prizes and changes</h4>
+      <p class="text-muted mb-2">
+        Prizes for each season are announced in-app before the season opens. Winners are notified
+        through the platform and must have a verified KYC status and a matching bank account to be
+        paid. Prizes are not transferable.
+      </p>
+      <p class="text-muted mb-0">
+        We may amend these rules, adjust the boards, or pause a season. Material changes are
+        announced before they take effect and never applied retroactively to a season already in
+        progress. These rules sit alongside our
+        <a href="terms.html" class="text-decoration-none">Terms of Service</a> and
+        <a href="privacy.html" class="text-decoration-none">Privacy Policy</a>.
+      </p>
+    </div>
+
+    <div class="text-center py-4">
+      <a href="leaderboard.html" class="text-decoration-none">
+        <button class="btn btn-primary btn-lg">View this week's boards</button>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-white py-5">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-3 mb-4">
+        <div class="d-flex align-items-center mb-4">
+          <div class="logo-icon rounded d-flex align-items-center justify-content-center me-2">
+            <img src="img/logo-footer.png" class="img-fluid">
+          </div>
+        </div>
+        <div class="text-light">
+          <p class="mb-2">+234 708 423 4532</p>
+          <p class="mb-0">support@mercurialfx.com</p>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="fw-semibold mb-3">Quick Links</h5>
+        <div class="d-flex flex-column">
+          <a href="index.html#benefit" class="text-light text-decoration-none mb-2 hover-white">Features</a>
+          <a href="index.html#about" class="text-light text-decoration-none mb-2 hover-white">About Us</a>
+          <a href="leaderboard.html" class="text-light text-decoration-none mb-2 hover-white">Leaderboard</a>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="mt-4">
+          <a href="rules.html" class="text-light text-decoration-none d-block mb-2 hover-white">Leaderboard Rules</a>
+          <a href="terms.html" class="text-light text-decoration-none d-block mb-2 hover-white">Terms of Service</a>
+          <a href="privacy.html" class="text-light text-decoration-none d-block mb-2 hover-white">Privacy Policy</a>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="fw-semibold mb-3">Subscribe</h5>
+        <div class="input-group">
+          <input type="email" class="form-control bg-light text-dark shadow-none border-secondary"
+                 placeholder="Get product updates" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
+          <button class="btn btn-primary" type="button">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-top border-secondary pt-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex">
+            <a href="#" class="social-icon text-light rounded d-flex align-items-center justify-content-center me-3">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="social-icon text-light rounded d-flex align-items-center justify-content-center me-3">
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a href="#" class="social-icon text-light rounded d-flex align-items-center justify-content-center">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="text-light small">
+            <span class="d-block d-md-inline">A product of <span class="text-white fw-semibold">Mercurial</span></span>
+            <span class="d-block d-md-inline ms-md-4">&copy; 2025 Mercurial Fx. All rights reserved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

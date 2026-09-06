@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercurial FX Dashboard</title>
+    <title>Leaderboard | Mercurial FX</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -11,13 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../css/leaderboard.css" rel="stylesheet">
     <link rel="shortcut icon" href="../img/icon.png">
 </head>
 <body>
     <div class="d-flex vh-100">
         <!-- Mobile Overlay -->
         <div class="mobile-overlay d-lg-none" id="mobileOverlay"></div>
-        
+
         <!-- Sidebar -->
         <div class="sidebar bg-white border-end d-lg-flex" id="sidebar">
             <!-- Close Button for Mobile -->
@@ -26,7 +27,7 @@
                     <i class="bi bi-x-lg"></i>
                 </button>
             </div>
-            
+
             <div class="flex-grow-1 py-3" style="height:100vh;overflow:auto;">
                 <!-- Navigation -->
                 <nav class="px-3">
@@ -35,9 +36,8 @@
                         <img src="../img/logo.png" class="img-fluid m-3">
                     </div>
 
-
                     <div class="nav-item mb-2">
-                        <button class="btn btn-nav active w-100 text-start">
+                        <button class="btn btn-nav w-100 text-start">
                             <a href="dashboard.html" class="text-decoration-none text-dark">
                                 <i class="bi bi-grid-3x3-gap me-3"></i>
                                 Dashboard
@@ -50,7 +50,6 @@
                                 <i class="bi bi-credit-card me-3"></i>
                                  Transactions
                             </a>
-                            
                         </button>
                     </div>
                     <div class="nav-item mb-2">
@@ -62,7 +61,7 @@
                         </button>
                     </div>
                     <div class="nav-item mb-2">
-                        <button class="btn btn-nav w-100 text-start">
+                        <button class="btn btn-nav active w-100 text-start">
                             <a href="leaderboard.html" class="text-decoration-none text-dark">
                                  <i class="bi bi-trophy me-3"></i>
                                   Leaderboard
@@ -94,7 +93,7 @@
                         </button>
                     </div>
 
-                      <!-- KYC Verification Section -->
+                    <!-- KYC Verification Section -->
                     <div class="mb-5 px-3">
                         <div class="kyc-card bg-light rounded p-3 text-center">
                             <div class="kyc-icon mx-auto mb-3">
@@ -104,10 +103,9 @@
                             <a href="kyc.html" class="text-decoration-none text-dark">
                                 <button class="btn btn-primary w-100">Get verified</button>
                             </a>
-                            
                         </div>
                     </div>
-                </nav> 
+                </nav>
             </div>
         </div>
 
@@ -120,11 +118,9 @@
                     <button class="btn btn-link p-0 me-3 d-lg-none text-dark" id="toggleSidebar">
                         <i class="bi bi-list fs-4"></i>
                     </button>
-                    
-                  
+
                     <div class="d-flex align-items-center">
-                        <!-- Welcome Message -->
-                        <h1 class="h5 mb-0 text-dark d-block">Welcome, Victor</h1>
+                        <h1 class="h5 mb-0 text-dark d-block">Leaderboard</h1>
                     </div>
                 </div>
 
@@ -141,37 +137,83 @@
                         <i class="bi bi-chevron-down text-muted"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                        <li><a class="dropdown-item" href="../login.html">Logout</a></li>
                     </ul>
                 </div>
             </header>
 
-            <!-- Main Content -->
-            <main class="flex-grow-1 d-flex align-items-center justify-content-center p-3 p-lg-4 main-content">
-                <div class="text-center w-100" style="max-width: 400px;">
-                    <h2 class="h5 h4-lg fw-medium text-dark mb-2">Welcome to the Mercurial FX application.</h2>
-                    <p class="text-muted mb-4">Verify your KYC to proceed</p>
-                    <a href="kyc.html" class="text-decoration-none">
-                        
-                         <button class="btn btn-primary px-4 py-2">Verify Now</button>
-                    </a>
-                     
+            <!-- Main -->
+            <main class="flex-grow-1 main-content lb-scope" id="dashLeaderboard"
+                  style="overflow-y:auto; padding:24px;">
+
+                <!-- Season strip -->
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+                    <div>
+                        <h2 class="h5 fw-semibold mb-1">This week's boards</h2>
+                        <p class="text-muted small mb-0" data-lb-blurb></p>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                        <div class="lb-countdown lb-countdown--light">
+                            <span class="lb-pulse"></span>
+                            <span class="small">Resets in</span>
+                            <span class="lb-clock" data-lb-clock>--</span>
+                        </div>
+                        <a href="../rules.html" class="btn btn-outline-secondary btn-sm shadow-none" style="border-radius:50px;">
+                            <i class="bi bi-info-circle me-1"></i> Rules
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Your handle -->
+                <div class="lb-note d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="bi bi-incognito fs-4"></i>
+                        <div>
+                            <span class="d-block small">You appear on every board as</span>
+                            <strong class="text-dark" style="font-size:1.05rem;">QuietRaven920</strong>
+                        </div>
+                    </div>
+                    <a href="settings.html" class="btn btn-outline-secondary btn-sm shadow-none" style="border-radius:50px;">
+                        Change handle
+                    </a>
+                </div>
+
+                <!-- Board switcher -->
+                <div class="lb-tabs mb-4" role="tablist" aria-label="Leaderboard categories">
+                    <button class="lb-tab" role="tab" data-lb-board="deposit-count">Deposits &middot; count</button>
+                    <button class="lb-tab" role="tab" data-lb-board="deposit-volume">Deposits &middot; volume</button>
+                    <button class="lb-tab" role="tab" data-lb-board="withdrawal-count">Withdrawals &middot; count</button>
+                    <button class="lb-tab" role="tab" data-lb-board="withdrawal-volume">Withdrawals &middot; volume</button>
+                    <button class="lb-tab" role="tab" data-lb-board="referrals">Referrals</button>
+                </div>
+
+                <!-- Top three -->
+                <div class="lb-podium" data-lb-podium></div>
+
+                <!-- Ranks 4+ -->
+                <div class="lb-list" data-lb-list></div>
+
+                <!-- Pinned: your position. Stays visible while the list scrolls. -->
+                <div class="lb-you" data-lb-you hidden></div>
+
             </main>
         </div>
     </div>
-
 
     <!--Jquery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    
     <script src="../js/dashboard.js"></script>
+    <script src="../js/leaderboard.js"></script>
+    <script>
+        MercurialLeaderboard.init({
+            root: "#dashLeaderboard",
+            showYou: true,
+            initialBoard: "deposit-count"
+        });
+    </script>
 </body>
 </html>

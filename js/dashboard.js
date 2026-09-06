@@ -143,6 +143,8 @@ if (imageUpload && profileImage) {
 
 
    //Datatable Js
+   // Guarded: pages like leaderboard.html have no #myTable and don't load DataTables.
+   if ($.fn.DataTable && $('#myTable').length) {
     $('#myTable').DataTable({
         dom: '<"top"f>rt<"bottom"p><"clear">', // keep only search + pagination
         pageLength: 10,
@@ -156,4 +158,5 @@ if (imageUpload && profileImage) {
 
     // Make search box full width
     $('#myTable_filter input').addClass('form-control w-100 shadow-none');
+   }
 });

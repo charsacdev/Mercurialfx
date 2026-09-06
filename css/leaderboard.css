@@ -1,0 +1,331 @@
+/* ==========================================================
+   Mercurial FX — Leaderboard
+   Shared by the public page (leaderboard.html) and the
+   in-dashboard page (dashboard/leaderboard.html).
+   All selectors are namespaced .lb-* to avoid collisions
+   with style.css / dashboard.css.
+   ========================================================== */
+
+.lb-scope {
+  --lb-primary: #2966cb;
+  --lb-ink: #141414;
+  --lb-muted: #6d6d6d;
+  --lb-line: #ececec;
+  --lb-surface: #ffffff;
+  --lb-surface-alt: #f7f8fa;
+  --lb-gold: #d9a441;
+  --lb-silver: #a8adb5;
+  --lb-bronze: #b87445;
+  --lb-up: #12805c;
+  --lb-down: #c0392b;
+}
+
+/* ---------- Countdown ---------- */
+.lb-countdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  padding: 10px 22px;
+  color: #fff;
+}
+
+.lb-countdown--light {
+  background: var(--lb-surface-alt);
+  border: 1px solid var(--lb-line);
+  color: var(--lb-ink);
+}
+
+.lb-countdown .lb-clock {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.lb-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+  animation: lb-pulse 2s infinite;
+}
+
+@keyframes lb-pulse {
+  70%  { box-shadow: 0 0 0 10px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+/* ---------- Tab strip ---------- */
+.lb-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.lb-tabs::-webkit-scrollbar { display: none; }
+
+.lb-tab {
+  flex: 0 0 auto;
+  border: 1px solid var(--lb-line);
+  background: var(--lb-surface);
+  color: var(--lb-muted);
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.lb-tab:hover { border-color: var(--lb-primary); color: var(--lb-primary); }
+
+.lb-tab.is-active {
+  background: var(--lb-primary);
+  border-color: var(--lb-primary);
+  color: #fff;
+}
+
+/* ---------- Podium ---------- */
+.lb-podium {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 32px;
+}
+
+.lb-podium-card {
+  background: var(--lb-surface);
+  border: 1px solid var(--lb-line);
+  border-radius: 20px;
+  padding: 24px 16px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.lb-podium-card:hover { transform: translateY(-4px); }
+
+.lb-podium-card--1 {
+  padding-top: 34px;
+  padding-bottom: 34px;
+  border-color: var(--lb-gold);
+  box-shadow: 0 12px 34px rgba(217, 164, 65, 0.18);
+}
+
+.lb-podium-card--2 { border-color: var(--lb-silver); }
+.lb-podium-card--3 { border-color: var(--lb-bronze); }
+
+.lb-medal {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.lb-podium-card--1 .lb-medal { background: var(--lb-gold); }
+.lb-podium-card--2 .lb-medal { background: var(--lb-silver); }
+.lb-podium-card--3 .lb-medal { background: var(--lb-bronze); }
+
+.lb-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #e8eefb;
+  color: var(--lb-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 auto 12px;
+  flex: 0 0 auto;
+}
+
+.lb-podium-card--1 .lb-avatar { width: 66px; height: 66px; font-size: 1.2rem; }
+
+.lb-handle {
+  font-weight: 600;
+  color: var(--lb-ink);
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+.lb-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--lb-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.lb-podium-card--1 .lb-value { font-size: 1.6rem; }
+
+.lb-unit {
+  font-size: 0.8rem;
+  color: var(--lb-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ---------- Rank list ---------- */
+.lb-list {
+  background: var(--lb-surface);
+  border: 1px solid var(--lb-line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.lb-row {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--lb-line);
+}
+
+.lb-row:last-child { border-bottom: 0; }
+.lb-row:nth-child(even) { background: var(--lb-surface-alt); }
+
+.lb-rank {
+  font-weight: 700;
+  color: var(--lb-muted);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.lb-identity { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.lb-identity .lb-avatar { width: 38px; height: 38px; font-size: 0.8rem; margin: 0; }
+.lb-identity .lb-handle { margin: 0; font-size: 0.95rem; }
+
+.lb-metric { text-align: right; white-space: nowrap; }
+.lb-metric .lb-value { font-size: 1.05rem; }
+
+.lb-move {
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.lb-move--up { color: var(--lb-up); }
+.lb-move--down { color: var(--lb-down); }
+.lb-move--flat { color: var(--lb-muted); }
+
+/* ---------- Pinned "your position" bar (dashboard only) ---------- */
+.lb-you {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  margin-top: 18px;
+  background: var(--lb-ink);
+  color: #fff;
+  border-radius: 14px;
+  padding: 14px 20px;
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.14);
+}
+
+.lb-you .lb-rank { color: #fff; }
+.lb-you .lb-handle { color: #fff; }
+.lb-you .lb-value { color: #7ea6f0; }
+.lb-you .lb-avatar { background: rgba(255, 255, 255, 0.16); color: #fff; }
+
+.lb-you-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+}
+
+/* ---------- Privacy / info notes ---------- */
+.lb-note {
+  background: var(--lb-surface-alt);
+  border: 1px solid var(--lb-line);
+  border-radius: 14px;
+  padding: 16px 20px;
+  color: var(--lb-muted);
+  font-size: 0.88rem;
+}
+
+.lb-note i { color: var(--lb-primary); }
+
+/* ---------- Empty state ---------- */
+.lb-empty {
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--lb-muted);
+}
+
+/* ---------- Rules page ---------- */
+.lb-rule-card {
+  background: var(--lb-surface);
+  border: 1px solid var(--lb-line);
+  border-radius: 18px;
+  padding: 28px;
+  height: 100%;
+}
+
+.lb-rule-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--lb-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+.lb-table-compact th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--lb-muted);
+  font-weight: 600;
+}
+
+.lb-table-compact td { vertical-align: top; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 767.98px) {
+  .lb-podium {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .lb-podium-card--1 { order: -1; }
+  .lb-podium-card { display: flex; align-items: center; text-align: left; gap: 14px; padding: 18px; }
+  .lb-podium-card .lb-avatar { margin: 0; }
+  .lb-podium-card--1 .lb-avatar { width: 52px; height: 52px; font-size: 1rem; }
+  .lb-medal { top: 50%; left: -8px; transform: translateY(-50%); width: 24px; height: 24px; font-size: 0.7rem; }
+  .lb-podium-body { flex: 1; min-width: 0; }
+  .lb-podium-card--1 .lb-value { font-size: 1.25rem; }
+
+  .lb-row { grid-template-columns: 38px 1fr auto; gap: 10px; padding: 12px 14px; }
+  .lb-you { grid-template-columns: 38px 1fr auto; gap: 10px; padding: 12px 14px; }
+  .lb-identity .lb-handle { font-size: 0.88rem; }
+}
