@@ -110,7 +110,7 @@
         </div>
 
         <!-- Main Content Area -->
-        <div class="flex-grow-1 d-flex flex-column">
+        <div class="flex-grow-1 d-flex flex-column lb-dash-col">
             <!-- Header -->
             <header class="bg-white border-bottom px-3 px-lg-4 py-3 d-flex align-items-center justify-content-between">
                 <!-- Mobile Menu Toggle -->
@@ -145,16 +145,15 @@
             </header>
 
             <!-- Main -->
-            <main class="flex-grow-1 main-content lb-scope" id="dashLeaderboard"
-                  style="overflow-y:auto; padding:24px;">
+            <main class="flex-grow-1 main-content lb-scope lb-dash" id="dashLeaderboard">
 
                 <!-- Season strip -->
                 <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
-                    <div>
+                    <div class="lb-minw">
                         <h2 class="h5 fw-semibold mb-1">This week's boards</h2>
                         <p class="text-muted small mb-0" data-lb-blurb></p>
                     </div>
-                    <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <div class="lb-dash-strip flex-shrink-0">
                         <div class="lb-countdown lb-countdown--light">
                             <span class="lb-pulse"></span>
                             <span class="small">Resets in</span>
@@ -167,15 +166,15 @@
                 </div>
 
                 <!-- Your handle -->
-                <div class="lb-note d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
-                    <div class="d-flex align-items-center gap-3">
+                <div class="lb-note lb-dash-strip justify-content-between mb-4">
+                    <div class="d-flex align-items-center gap-3 lb-minw">
                         <i class="bi bi-incognito fs-4"></i>
-                        <div>
+                        <div class="lb-minw">
                             <span class="d-block small">You appear on every board as</span>
-                            <strong class="text-dark" style="font-size:1.05rem;">QuietRaven920</strong>
+                            <strong class="text-dark d-block text-truncate" style="font-size:1.05rem;">QuietRaven920</strong>
                         </div>
                     </div>
-                    <a href="settings.html" class="btn btn-outline-secondary btn-sm shadow-none" style="border-radius:50px;">
+                    <a href="settings.html" class="btn btn-outline-secondary btn-sm shadow-none flex-shrink-0" style="border-radius:50px;">
                         Change handle
                     </a>
                 </div>

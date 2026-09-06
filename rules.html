@@ -106,38 +106,28 @@
       <div class="lb-rule-num">2</div>
       <h4 class="fw-semibold mb-3">The five boards</h4>
       <p class="text-muted">Each board ranks independently. You can appear on all five at once.</p>
-      <div class="table-responsive">
-        <table class="table lb-table-compact align-middle">
-          <thead>
-            <tr>
-              <th>Board</th>
-              <th>What it measures</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="fw-semibold text-nowrap">Deposits &middot; count</td>
-              <td class="text-muted">Number of confirmed deposits. Size is irrelevant — a ₦5,000 deposit scores the same as a ₦5,000,000 one.</td>
-            </tr>
-            <tr>
-              <td class="fw-semibold text-nowrap">Deposits &middot; volume</td>
-              <td class="text-muted">Total naira value of confirmed deposits that cleared the settlement window in section 4.</td>
-            </tr>
-            <tr>
-              <td class="fw-semibold text-nowrap">Withdrawals &middot; count</td>
-              <td class="text-muted">Number of payouts completed to your bank account or wallet.</td>
-            </tr>
-            <tr>
-              <td class="fw-semibold text-nowrap">Withdrawals &middot; volume</td>
-              <td class="text-muted">Total naira value paid out to you and confirmed received.</td>
-            </tr>
-            <tr>
-              <td class="fw-semibold text-nowrap">Referrals</td>
-              <td class="text-muted">Referred members who completed KYC <em>and</em> made at least one confirmed transaction. See section 6.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <dl class="lb-boarddefs">
+        <div class="lb-boarddef">
+          <dt>Deposits &middot; count</dt>
+          <dd>Number of confirmed deposits. Size is irrelevant — a ₦5,000 deposit scores the same as a ₦5,000,000 one.</dd>
+        </div>
+        <div class="lb-boarddef">
+          <dt>Deposits &middot; volume</dt>
+          <dd>Total naira value of confirmed deposits that cleared the settlement window in section 4.</dd>
+        </div>
+        <div class="lb-boarddef">
+          <dt>Withdrawals &middot; count</dt>
+          <dd>Number of payouts completed to your bank account or wallet.</dd>
+        </div>
+        <div class="lb-boarddef">
+          <dt>Withdrawals &middot; volume</dt>
+          <dd>Total naira value paid out to you and confirmed received.</dd>
+        </div>
+        <div class="lb-boarddef">
+          <dt>Referrals</dt>
+          <dd>Referred members who completed KYC <em>and</em> made at least one confirmed transaction. See section 6.</dd>
+        </div>
+      </dl>
       <p class="text-muted mb-0 small">
         Ties are broken by whoever reached the score first. If both boards and timestamps tie, the
         higher position goes to the member with the longer account history.

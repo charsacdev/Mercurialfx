@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard Participants | Mercurial Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="shortcut icon" href="../img/icon.png">
+</head>
+<body>
+    <!-- Mobile sidebar -->
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">
+                <img src="../img/headerlogo.png" class="img-fluid">
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="sidebar-nav">
+                <ul class="list-unstyled">
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                    <li class="with-badge"><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions <span class="badge text-bg-secondary ms-2">18</span></a></li>
+                    <li class="with-badge"><a href="kyc.html"><i class="fas fa-check-circle"></i> KYC <span class="badge text-bg-secondary ms-2">30</span></a></li>
+                    <li class="active"><a href="leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+                    <li><a href="privacy.html"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                    <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="broadcast.html"><i class="fas fa-broadcast-tower"></i> Broadcast</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <a href="../login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <!-- Desktop sidebar -->
+        <div class="d-none d-lg-block sidebar-desktop bg-dark text-white p-3 vh-100 position-fixed">
+            <div class="mercurial-logo mb-4">
+                <img src="../img/headerlogo.png" class="img-fluid">
+            </div>
+            <div class="sidebar-nav">
+                <ul class="list-unstyled">
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Users</a></li>
+                    <li class="with-badge"><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions <span class="badge text-bg-secondary ms-2">18</span></a></li>
+                    <li class="with-badge"><a href="kyc.html"><i class="fas fa-check-circle"></i> KYC <span class="badge text-bg-secondary ms-2">30</span></a></li>
+                    <li class="active"><a href="leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+                    <li><a href="privacy.html"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                    <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                    <li><a href="broadcast.html"><i class="fas fa-broadcast-tower"></i> Broadcast</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <a href="../login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+
+        <div class="flex-grow-1 p-4 content-area">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <button class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 class="dashboard-title d-none d-lg-block">&nbsp;Leaderboard Participants</h2>
+                <div class="d-flex align-items-center profile-section ms-auto ms-lg-0">
+                    <div class="profile-circle me-2">C</div>
+                    <div class="d-none d-sm-block">
+                        <small class="d-block profile-name">Charsac Tech.</small>
+                        <small class="d-block profile-role">Admin</small>
+                    </div>
+                    <i class="fas fa-angle-down text-muted ms-2 d-none d-sm-block"></i>
+                </div>
+            </div>
+
+            <!-- Season summary -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
+                <div class="col">
+                    <div class="stat-card p-3">
+                        <small>Participants this season</small>
+                        <h3 class="mb-0">1,284</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card p-3">
+                        <small>Season</small>
+                        <h3 class="mb-0">W36</h3>
+                        <p class="text-muted small mb-0">Sep 1 &ndash; Sep 7, 2025</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card p-3">
+                        <small>Flagged for review</small>
+                        <h3 class="mb-0">3</h3>
+                        <p class="text-danger small mb-0"><i class="fas fa-triangle-exclamation"></i> Possible fund cycling</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card p-3">
+                        <small>Identity lookups today</small>
+                        <h3 class="mb-0">7</h3>
+                        <p class="text-muted small mb-0">All logged</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-3 shadow-sm border-0">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                    <div class="search-box flex-grow-1">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                            <input type="text" class="form-control shadow-none border-start-0" placeholder="Search handle or name" aria-label="Search" id="participantSearchInput">
+                        </div>
+                    </div>
+                    <select class="form-select shadow-none flex-shrink-0" id="boardFilter" style="max-width: 240px;">
+                        <option value="">All boards</option>
+                        <option value="Deposits">Deposits</option>
+                        <option value="Withdrawals">Withdrawals</option>
+                        <option value="Referrals">Referrals</option>
+                    </select>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="participantsTable" class="table align-middle users-table w-100">
+                        <thead style="white-space: nowrap;">
+                            <tr>
+                                <th><input class="form-check-input" type="checkbox"></th>
+                                <th>Handle</th>
+                                <th>Best rank</th>
+                                <th>Deposits</th>
+                                <th>Withdrawals</th>
+                                <th>Referrals</th>
+                                <th>KYC</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody style="white-space: nowrap;"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         Identity disclosure modal
+         Populated from the row's dataset on demand. The reveal is
+         deliberately an explicit action, not something rendered
+         into the table, so the mapping is never on screen by default.
+         ========================================================== -->
+    <div class="modal fade" id="identityModal" tabindex="-1" aria-labelledby="identityModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title fw-bold" id="identityModalLabel">Identity disclosure</h5>
+                        <small class="text-muted">Handle <span class="fw-semibold" id="idmHandle">&mdash;</span></small>
+                    </div>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="alert alert-warning d-flex align-items-start gap-2 py-2 px-3 mb-4" role="alert">
+                        <i class="fas fa-shield-halved mt-1"></i>
+                        <small class="mb-0">
+                            This member is pseudonymous on all public boards. Opening this panel is
+                            recorded against your admin account with a timestamp. Do not share these
+                            details outside a verification, payout or investigation context.
+                        </small>
+                    </div>
+
+                    <div class="row align-items-center mb-4">
+                        <div class="col-auto">
+                            <div class="profile-circle" id="idmInitial" style="width:56px;height:56px;font-size:20px;">J</div>
+                        </div>
+                        <div class="col">
+                            <h4 class="mb-1" id="idmName">&mdash;</h4>
+                            <span class="badge bg-success-subtle text-success" id="idmAccountStatus">Active</span>
+                            <span class="badge bg-danger-subtle text-danger ms-1" id="idmKycStatus">Not Verified</span>
+                        </div>
+                    </div>
+
+                    <h6 class="text-muted fw-bold mb-3">Contact</h6>
+                    <div class="row detail-grid mb-4">
+                        <div class="col-sm-6 detail-item mb-3">
+                            <label class="text-muted d-block small">Email Address</label>
+                            <p class="mb-0 fw-semibold" id="idmEmail">&mdash;</p>
+                        </div>
+                        <div class="col-sm-6 detail-item mb-3">
+                            <label class="text-muted d-block small">Phone Number</label>
+                            <p class="mb-0 fw-semibold" id="idmPhone">&mdash;</p>
+                        </div>
+                    </div>
+
+                    <h6 class="text-muted fw-bold mb-3">Address</h6>
+                    <div class="row detail-grid mb-4">
+                        <div class="col-12 detail-item mb-3">
+                            <label class="text-muted d-block small">Street Address</label>
+                            <p class="mb-0 fw-semibold" id="idmAddress">&mdash;</p>
+                        </div>
+                        <div class="col-sm-4 detail-item mb-3">
+                            <label class="text-muted d-block small">City</label>
+                            <p class="mb-0 fw-semibold" id="idmCity">&mdash;</p>
+                        </div>
+                        <div class="col-sm-4 detail-item mb-3">
+                            <label class="text-muted d-block small">State</label>
+                            <p class="mb-0 fw-semibold" id="idmState">&mdash;</p>
+                        </div>
+                        <div class="col-sm-4 detail-item mb-3">
+                            <label class="text-muted d-block small">Country</label>
+                            <p class="mb-0 fw-semibold" id="idmCountry">&mdash;</p>
+                        </div>
+                    </div>
+
+                    <h6 class="text-muted fw-bold mb-3">Identity document</h6>
+                    <div class="row detail-grid mb-4">
+                        <div class="col-sm-6 detail-item mb-3">
+                            <label class="text-muted d-block small">ID Type</label>
+                            <p class="mb-0 fw-semibold" id="idmIdType">&mdash;</p>
+                        </div>
+                        <div class="col-sm-6 detail-item mb-3">
+                            <label class="text-muted d-block small">ID Number</label>
+                            <p class="mb-0 fw-semibold" id="idmIdNumber">&mdash;</p>
+                        </div>
+                    </div>
+
+                    <h6 class="text-muted fw-bold mb-3">Season standing</h6>
+                    <div class="row row-cols-2 row-cols-md-4 g-3 referral-stats">
+                        <div class="col">
+                            <div class="stat-box p-3">
+                                <small class="d-block text-muted">Deposits</small>
+                                <h4 class="mb-0" id="idmDeposits">&mdash;</h4>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stat-box p-3">
+                                <small class="d-block text-muted">Withdrawals</small>
+                                <h4 class="mb-0" id="idmWithdrawals">&mdash;</h4>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stat-box p-3">
+                                <small class="d-block text-muted">Referrals</small>
+                                <h4 class="mb-0" id="idmReferrals">&mdash;</h4>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stat-box p-3">
+                                <small class="d-block text-muted">Best rank</small>
+                                <h4 class="mb-0" id="idmBestRank">&mdash;</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4" id="idmFlagWrap" hidden>
+                        <div class="alert alert-danger d-flex align-items-start gap-2 py-2 px-3 mb-0" role="alert">
+                            <i class="fas fa-triangle-exclamation mt-1"></i>
+                            <small class="mb-0" id="idmFlagText"></small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-danger" id="idmRemoveBtn">Remove from boards</button>
+                    <a href="user2.html" class="btn btn-primary" id="idmProfileLink">Open full profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // ----------------------------------------------------------
+            // Participant roster.
+            // Handles here match the public boards in js/leaderboard.js;
+            // the identity block is the part that never leaves admin.
+            // ----------------------------------------------------------
+            var PARTICIPANTS = [
+                {
+                    handle: "SwiftKite482", bestRank: "#1 Deposits", boards: "Deposits Withdrawals Referrals",
+                    deposits: 47, withdrawals: 17, referrals: 28, kyc: "Verified", status: "Active",
+                    name: "Chukwuemeka Obinna", email: "c.obinna@gmail.com", phone: "+234 803 442 1187",
+                    address: "12 Independence Layout, Off Chime Avenue", city: "Enugu", state: "Enugu",
+                    country: "Nigeria", idType: "NIN", idNumber: "43563129643"
+                },
+                {
+                    handle: "NovaTiger019", bestRank: "#1 Deposit volume", boards: "Deposits Withdrawals Referrals",
+                    deposits: 44, withdrawals: 14, referrals: 14, kyc: "Verified", status: "Active",
+                    name: "Aisha Bello Danjuma", email: "aisha.danjuma@yahoo.com", phone: "+234 706 918 3320",
+                    address: "5 Ahmadu Bello Way, Wuse II", city: "Abuja", state: "FCT",
+                    country: "Nigeria", idType: "Passport", idNumber: "A09821774"
+                },
+                {
+                    handle: "AmberFalcon77", bestRank: "#1 Withdrawals", boards: "Deposits Withdrawals Referrals",
+                    deposits: 41, withdrawals: 22, referrals: 19, kyc: "Verified", status: "Active",
+                    name: "Tolulope Adeyemi", email: "tolu.adeyemi@gmail.com", phone: "+234 811 205 7764",
+                    address: "48 Adeniyi Jones Avenue, Ikeja", city: "Lagos", state: "Lagos",
+                    country: "Nigeria", idType: "Driver's License", idNumber: "LGS-A4471902"
+                },
+                {
+                    handle: "QuietRaven920", bestRank: "#3 Withdrawals", boards: "Deposits Withdrawals Referrals",
+                    deposits: 38, withdrawals: 19, referrals: 17, kyc: "Verified", status: "Active",
+                    name: "Janet Doe", email: "janet.doe@gmail.com", phone: "+234 802 771 4409",
+                    address: "9 Police Post Road, Maryland", city: "Lagos", state: "Lagos",
+                    country: "Nigeria", idType: "NIN", idNumber: "21774390558"
+                },
+                {
+                    handle: "VividOsprey31", bestRank: "#1 Referrals", boards: "Deposits Withdrawals Referrals",
+                    deposits: 31, withdrawals: 11, referrals: 31, kyc: "Verified", status: "Active",
+                    name: "Ifeanyi Nwachukwu", email: "ifeanyi.nwa@outlook.com", phone: "+234 907 663 2218",
+                    address: "22 Ogui Road", city: "Enugu", state: "Enugu",
+                    country: "Nigeria", idType: "NIN", idNumber: "88213470921",
+                    flag: "Referral cluster: 6 downlines share a device fingerprint. Referral score withheld pending review."
+                },
+                {
+                    handle: "GoldenLynx553", bestRank: "#1 Withdrawal volume", boards: "Deposits Withdrawals Referrals",
+                    deposits: 26, withdrawals: 12, referrals: 21, kyc: "Verified", status: "Active",
+                    name: "Fatima Yusuf Ibrahim", email: "fatima.yusuf@gmail.com", phone: "+234 815 330 9902",
+                    address: "17 Murtala Mohammed Way", city: "Kano", state: "Kano",
+                    country: "Nigeria", idType: "Passport", idNumber: "B11430876"
+                },
+                {
+                    handle: "CoralHawk236", bestRank: "#5 Deposits", boards: "Deposits Withdrawals Referrals",
+                    deposits: 36, withdrawals: 10, referrals: 10, kyc: "Verified", status: "Active",
+                    name: "Samuel Okonkwo", email: "sam.okonkwo@gmail.com", phone: "+234 703 118 6645",
+                    address: "3 Aba Road", city: "Port Harcourt", state: "Rivers",
+                    country: "Nigeria", idType: "NIN", idNumber: "55082176430"
+                },
+                {
+                    handle: "IronPetrel845", bestRank: "#6 Deposits", boards: "Deposits Withdrawals Referrals",
+                    deposits: 33, withdrawals: 9, referrals: 9, kyc: "Not Verified", status: "Active",
+                    name: "Blessing Eze", email: "blessing.eze@yahoo.com", phone: "+234 809 447 1152",
+                    address: "31 Zik Avenue, Uwani", city: "Enugu", state: "Enugu",
+                    country: "Nigeria", idType: "—", idNumber: "—"
+                },
+                {
+                    handle: "TitanSable301", bestRank: "#2 Withdrawal volume", boards: "Deposits Withdrawals",
+                    deposits: 18, withdrawals: 8, referrals: 2, kyc: "Verified", status: "Active",
+                    name: "Emeka Chidiebere", email: "emeka.c@gmail.com", phone: "+234 806 229 8834",
+                    address: "77 Awolowo Road, Ikoyi", city: "Lagos", state: "Lagos",
+                    country: "Nigeria", idType: "Passport", idNumber: "A55219043",
+                    flag: "Cycling pattern: 4 deposit/withdrawal pairs of identical value within 6 hours. Volume scores voided under rule 4."
+                },
+                {
+                    handle: "SilentOtter742", bestRank: "#2 Withdrawals", boards: "Deposits Withdrawals Referrals",
+                    deposits: 22, withdrawals: 20, referrals: 24, kyc: "Verified", status: "Active",
+                    name: "Ngozi Okafor", email: "ngozi.okafor@gmail.com", phone: "+234 813 776 5590",
+                    address: "14 Nnamdi Azikiwe Street", city: "Awka", state: "Anambra",
+                    country: "Nigeria", idType: "NIN", idNumber: "70335129884"
+                },
+                {
+                    handle: "EchoMagpie974", bestRank: "#5 Withdrawal volume", boards: "Deposits Withdrawals",
+                    deposits: 12, withdrawals: 6, referrals: 1, kyc: "Verified", status: "Blocked",
+                    name: "Yusuf Abdullahi", email: "y.abdullahi@outlook.com", phone: "+234 704 990 2213",
+                    address: "6 Ibrahim Taiwo Road", city: "Kaduna", state: "Kaduna",
+                    country: "Nigeria", idType: "NIN", idNumber: "31948027716",
+                    flag: "Account blocked pending investigation. Removed from all boards for season W36."
+                },
+                {
+                    handle: "EmberFinch174", bestRank: "#5 Withdrawals", boards: "Deposits Withdrawals Referrals",
+                    deposits: 27, withdrawals: 16, referrals: 15, kyc: "Verified", status: "Active",
+                    name: "Grace Adebayo", email: "grace.adebayo@gmail.com", phone: "+234 802 664 3317",
+                    address: "25 Ring Road", city: "Ibadan", state: "Oyo",
+                    country: "Nigeria", idType: "Driver's License", idNumber: "OYO-B7712045"
+                }
+            ];
+
+            function initial(name) {
+                return name.trim().charAt(0).toUpperCase();
+            }
+
+            function kycBadge(status) {
+                return status === "Verified"
+                    ? '<span class="badge text-bg-success-custom">Verified</span>'
+                    : '<span class="badge bg-danger-subtle text-danger">Not Verified</span>';
+            }
+
+            // Build the roster. Only the handle is rendered as text â the
+            // identity payload rides along in the row's data attributes.
+            var $tbody = $("#participantsTable tbody");
+            PARTICIPANTS.forEach(function (p, i) {
+                var $tr = $("<tr>").addClass("table-row").attr("data-index", i);
+                // Hidden search column keeps real names findable by admins
+                // without ever painting them into a visible cell.
+                $tr.append(
+                    '<td><input class="form-check-input" type="checkbox"></td>' +
+                    '<td>' +
+                        '<div class="d-flex align-items-center">' +
+                            '<div class="profile-initial me-2">' + initial(p.handle) + '</div>' +
+                            '<span class="fw-semibold">' + p.handle + '</span>' +
+                        '</div>' +
+                        '<span class="d-none">' + p.name + " " + p.email + " " + p.boards + '</span>' +
+                    '</td>' +
+                    '<td>' + p.bestRank + '</td>' +
+                    '<td>' + p.deposits + '</td>' +
+                    '<td>' + p.withdrawals + '</td>' +
+                    '<td>' + p.referrals + '</td>' +
+                    '<td>' + kycBadge(p.kyc) + '</td>' +
+                    '<td><button type="button" class="btn btn-sm btn-primary reveal-btn">' +
+                        '<i class="fas fa-eye me-1"></i> View identity</button></td>'
+                );
+                $tbody.append($tr);
+            });
+
+            // ----------------------------------------------------------
+            // DataTable
+            // ----------------------------------------------------------
+            var table = $("#participantsTable").DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                lengthChange: false,
+                pageLength: 10,
+                dom: '<"top"l<"clear">><"table-responsive"t><"bottom"ip<"clear">>',
+                columnDefs: [
+                    { orderable: false, targets: [0, 7] },
+                    { width: "20px", targets: 0 },
+                    { width: "140px", targets: 7 }
+                ],
+                initComplete: function () {
+                    var api = this.api();
+                    $("#participantSearchInput").on("keyup", function () {
+                        api.search(this.value).draw();
+                    });
+                    $(".dataTables_filter").hide();
+                }
+            });
+
+            // Board filter runs against the hidden board list in column 1.
+            $("#boardFilter").on("change", function () {
+                table.column(1).search(this.value).draw();
+            });
+
+            // ----------------------------------------------------------
+            // Identity disclosure
+            // ----------------------------------------------------------
+            var identityModal = new bootstrap.Modal(document.getElementById("identityModal"));
+
+            $("#participantsTable tbody").on("click", ".reveal-btn", function () {
+                var row = $(this).closest("tr");
+                // With responsive DataTables a row can be a child row, so walk
+                // back to the node the index was written on.
+                var index = row.data("index");
+                if (typeof index === "undefined") {
+                    index = row.prev("tr").data("index");
+                }
+
+                var p = PARTICIPANTS[index];
+                if (!p) return;
+
+                $("#idmHandle").text(p.handle);
+                $("#idmInitial").text(initial(p.name));
+                $("#idmName").text(p.name);
+                $("#idmEmail").text(p.email);
+                $("#idmPhone").text(p.phone);
+                $("#idmAddress").text(p.address);
+                $("#idmCity").text(p.city);
+                $("#idmState").text(p.state);
+                $("#idmCountry").text(p.country);
+                $("#idmIdType").text(p.idType);
+                $("#idmIdNumber").text(p.idNumber);
+                $("#idmDeposits").text(p.deposits);
+                $("#idmWithdrawals").text(p.withdrawals);
+                $("#idmReferrals").text(p.referrals);
+                $("#idmBestRank").text(p.bestRank);
+
+                $("#idmKycStatus")
+                    .text(p.kyc)
+                    .removeClass("bg-success-subtle text-success bg-danger-subtle text-danger")
+                    .addClass(p.kyc === "Verified" ? "bg-success-subtle text-success" : "bg-danger-subtle text-danger");
+
+                $("#idmAccountStatus")
+                    .text(p.status)
+                    .removeClass("bg-success-subtle text-success bg-danger-subtle text-danger")
+                    .addClass(p.status === "Active" ? "bg-success-subtle text-success" : "bg-danger-subtle text-danger");
+
+                if (p.flag) {
+                    $("#idmFlagText").text(p.flag);
+                    $("#idmFlagWrap").prop("hidden", false);
+                } else {
+                    $("#idmFlagWrap").prop("hidden", true);
+                }
+
+                // Real implementation: POST an audit entry here before the
+                // details are shown, and fail closed if it does not write.
+                console.log("[audit] identity lookup", {
+                    handle: p.handle,
+                    viewedAt: new Date().toISOString()
+                });
+
+                identityModal.show();
+            });
+
+            $("#idmRemoveBtn").on("click", function () {
+                var handle = $("#idmHandle").text();
+                if (confirm("Remove " + handle + " from all boards for this season?")) {
+                    console.log("[action] removed from boards", handle);
+                    identityModal.hide();
+                }
+            });
+
+            // Select-all checkbox in the header
+            $("#participantsTable thead input[type=checkbox]").on("change", function () {
+                $("#participantsTable tbody input[type=checkbox]").prop("checked", this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

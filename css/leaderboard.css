@@ -329,3 +329,104 @@
   .lb-you { grid-template-columns: 38px 1fr auto; gap: 10px; padding: 12px 14px; }
   .lb-identity .lb-handle { font-size: 0.88rem; }
 }
+
+/* ==========================================================
+   Board definitions list (rules.html section 2)
+   Two columns on desktop, stacked on small screens so the
+   term sits above its description instead of scrolling.
+   ========================================================== */
+.lb-boarddefs { margin: 0 0 12px; }
+
+.lb-boarddef {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--lb-line);
+}
+
+.lb-boarddef:first-of-type { padding-top: 0; }
+.lb-boarddef:last-of-type { border-bottom: 0; padding-bottom: 0; }
+
+.lb-boarddef dt {
+  font-weight: 600;
+  color: var(--lb-ink);
+}
+
+.lb-boarddef dd {
+  margin: 0;
+  color: var(--lb-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 767.98px) {
+  .lb-boarddef {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 14px 0;
+  }
+}
+
+/* ==========================================================
+   Dashboard host
+   The dashboard shell is a column flex chain inside .vh-100.
+   Flex items default to min-height:auto, which stops them
+   shrinking below their content — so overflow-y never engages
+   and the page grows instead of scrolling. min-height:0 on the
+   chain is what makes the scroll (and the sticky bar) work.
+   ========================================================== */
+.lb-dash-col {
+  min-width: 0;
+  min-height: 0;
+}
+
+.lb-dash {
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px;
+}
+
+/* Season strip + handle strip: allow wrapping before overflow */
+.lb-dash-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 991.98px) {
+  .lb-dash { padding: 18px 16px 16px; }
+}
+
+@media (max-width: 575.98px) {
+  .lb-dash { padding: 14px 12px 12px; }
+
+  .lb-countdown {
+    padding: 8px 14px;
+    gap: 8px;
+    font-size: 0.85rem;
+  }
+
+  .lb-countdown .lb-clock { font-size: 0.85rem; }
+
+  /* Keep long naira values from bursting the podium card */
+  .lb-podium-card--1 .lb-value,
+  .lb-value { font-size: 1.05rem; }
+
+  .lb-unit { font-size: 0.72rem; }
+}
+
+/* Long handles must ellipsis rather than push the metric off-screen */
+.lb-identity { min-width: 0; }
+
+.lb-identity .lb-handle,
+.lb-you .lb-handle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Flex/grid children need an explicit min-width:0 before text-truncate works */
+.lb-minw { min-width: 0; }
